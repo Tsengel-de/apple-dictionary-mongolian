@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       publish:
-        description: "Create GitHub Release with precompiled .dictionary bundles"
+        description: "Create GitHub Release with precompiled .dictionary bundles and DMG"
         type: boolean
         default: false
 
@@ -107,9 +107,11 @@ jobs:
           test -d "objects/Mongolian-Tsevel-Explanatory.dictionary/Contents" || exit 1
           echo "Tsevel build success!"
 
-      - name: Package bundles into zip archives
+      - name: Package bundles into zip archives and DMG installer
         run: |
           mkdir -p dist
+          
+          # Zip standalone bundles
           ditto -c -k --sequesterRsrc --keepParent \
             "build/Mongolian-English-Altangerel/objects/Mongolian-English-Altangerel.dictionary" \
             dist/Mongolian-English-Altangerel.dictionary.zip
@@ -117,13 +119,49 @@ jobs:
           ditto -c -k --sequesterRsrc --keepParent \
             "build/Mongolian-Tsevel-Explanatory/objects/Mongolian-Tsevel-Explanatory.dictionary" \
             dist/Mongolian-Tsevel-Explanatory.dictionary.zip
-            
+
+          # Build professional DMG installer
+          DMG_STAGE="dmg_stage"
+          mkdir -p "$DMG_STAGE"
+          cp -R "build/Mongolian-English-Altangerel/objects/Mongolian-English-Altangerel.dictionary" "$DMG_STAGE/"
+          cp -R "build/Mongolian-Tsevel-Explanatory/objects/Mongolian-Tsevel-Explanatory.dictionary" "$DMG_STAGE/"
+          
+          cat << 'EOF' > "$DMG_STAGE/Install.command"
+#!/usr/bin/env bash
+DIR="$(cd "$(dirname "$0")" && pwd)"
+DEST="$HOME/Library/Dictionaries"
+mkdir -p "$DEST"
+echo "Installing Mongolian Dictionaries into $DEST..."
+cp -R "$DIR"/Mongolian-*.dictionary "$DEST/"
+xattr -dr com.apple.quarantine "$DEST"/Mongolian-*.dictionary 2>/dev/null || true
+touch "$DEST"
+osascript -e 'display dialog "🇲🇳 Монгол толь бичгүүд амжилттай суулаа!\n\nDictionary.app-аа нээгээд Cmd + , (Settings) дотроос идэвхжүүлж ашиглана уу." with title "Mongolian Dictionaries for macOS" buttons {"Ойлголоо"} default button 1 with icon note' 2>/dev/null || echo "Done!"
+EOF
+          chmod +x "$DMG_STAGE/Install.command"
+          
+          cat << 'EOF' > "$DMG_STAGE/README.txt"
+Mongolian Dictionaries for macOS
+================================
+Part of the "Mongolian Language for All" initiative (tsengel.de)
+
+EASY INSTALLATION:
+1. Double-click "Install.command" to install automatically.
+   OR: Drag both .dictionary folders into ~/Library/Dictionaries/.
+2. Launch Dictionary.app, press Cmd + , (Settings), and enable:
+   - English-Mongolian Dictionary (Altangerel)
+   - Монгол хэлний тайлбар толь (Цэвэл)
+EOF
+
+          ln -s /Library/Dictionaries "$DMG_STAGE/Drop Dictionaries Here"
+          
+          hdiutil create -volname "Mongolian Dictionaries" -srcfolder "$DMG_STAGE" -ov -format UDZO dist/Mongolian-Dictionaries-macOS.dmg
+
           cd dist
-          shasum -a 256 *.zip > SHA256SUMS.txt
+          shasum -a 256 *.zip *.dmg > SHA256SUMS.txt
           cat SHA256SUMS.txt
           ls -lh
 
-      - name: Upload compiled binary bundles
+      - name: Upload compiled binary bundles and DMG
         uses: actions/upload-artifact@v4
         with:
           name: precompiled-dictionaries
@@ -156,26 +194,21 @@ jobs:
           fi
           
           cat << 'EOF' > release_notes.md
-          # Apple Dictionaries for macOS (Mongolian Suite)
+          # Apple Dictionaries for macOS (Dual-Script Mongolian Suite)
 
-          Native macOS dictionary bundles featuring seamless **Spotlight search**, **3-finger tap Lookup**, and **Safari Force-Click** integration.
+          Native macOS dictionary bundles featuring seamless **Spotlight search**, **3-finger tap Lookup**, and **Safari Force-Click** integration with full **Traditional Mongolian Script (ᠮᠣᠩᠭᠣᠯ ᠪᠢᠴᠢᠭ)** and **Classical Latin Galig**.
 
           ### Included Dictionaries:
           1. **English-Mongolian Dictionary (Dr. Altangerel Damdinsuren)**
              - **25,252 entries**
-             - Comprehensive English headwords with Mongolian Cyrillic definitions, parts-of-speech badges, and usage examples.
+             - Enriched with Traditional Mongolian script translation badges (`ᠮᠣᠷᠢ`) and bidirectional Cyrillic/Traditional search indexing.
           2. **Mongolian Explanatory Dictionary (Ya. Tsevel / Монгол хэлний их тайлбар толь)**
              - **30,626 entries**
-             - Authoritative monolingual definitions, proverbs, idioms, and grammatical categories.
+             - Dual-script vertical ribbon layout (`vertical-lr`), classical galig, proverbs, idioms, and grammatical categories.
 
-          ### Installation on macOS:
-          1. Download and unzip the `.dictionary.zip` files below.
-          2. Open **Finder**, press `Cmd + Shift + G`, and navigate to:
-             `~/Library/Dictionaries/`
-          3. Drag and drop the `.dictionary` bundles into `~/Library/Dictionaries/`.
-          4. Open **Dictionary.app**, go to **Settings** (`Cmd + ,`), and enable:
-             - `English-Mongolian Dictionary (Altangerel)`
-             - `Монгол хэлний тайлбар толь (Цэвэл)`
+          ### Easy Installation on macOS:
+          - **Option 1 (Recommended)**: Download `Mongolian-Dictionaries-macOS.dmg`, open it, and double-click **`Install.command`**!
+          - **Option 2**: Download the `.dictionary.zip` files, unzip, and copy to `~/Library/Dictionaries/`.
 
           Part of the **Mongolian Language for All** initiative (https://tsengel.de).
           EOF
@@ -183,6 +216,7 @@ jobs:
           gh release create "$TAG_NAME" \
             --title "Apple Dictionaries for Mongolian $TAG_NAME" \
             --notes-file release_notes.md \
+            dist/Mongolian-Dictionaries-macOS.dmg \
             dist/Mongolian-English-Altangerel.dictionary.zip \
             dist/Mongolian-Tsevel-Explanatory.dictionary.zip \
             dist/SHA256SUMS.txt

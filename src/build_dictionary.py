@@ -283,15 +283,94 @@ def build_altangerel():
     final_xml_filename = f"{dict_name}.xml"
     final_xml_path = out_dir / final_xml_filename
     
-    print(f"[*] Enhancing XML styling and typography from {raw_xml_path.name}...")
-    with open(raw_xml_path, "r", encoding="utf-8") as fin, open(final_xml_path, "w", encoding="utf-8") as fout:
-        for line in fin:
-            # Enhance font color tags to badge classes
-            line = re.sub(r'<font color="blue">([^<]+)</font>', r'<span class="pos">\1</span>', line)
-            # Self-closing breaks
-            line = re.sub(r'<br\s*>', '<br/>', line, flags=re.IGNORECASE)
-            line = re.sub(r'<br\s*/>', '<br/>', line, flags=re.IGNORECASE)
-            fout.write(line)
+    # Load traditional Mongolian script mapping if available
+    bichig_mapping = {}
+    bichig_json_path = DATA_DIR / "bichig_mapping.json"
+    if bichig_json_path.exists():
+        import json
+        with open(bichig_json_path, "r", encoding="utf-8") as f:
+            bichig_mapping = json.load(f)
+
+    print(f"[*] Enhancing XML styling, traditional script & bidirectional indexing from {raw_xml_path.name}...")
+    entry_pattern = re.compile(r'<d:entry\s+([^>]+)>(.*?)</d:entry>', re.DOTALL)
+    
+    with open(raw_xml_path, "r", encoding="utf-8") as fin:
+        content = fin.read()
+
+    def process_entry(match):
+        attrs = match.group(1)
+        body = match.group(2)
+        
+        title_m = re.search(r'd:title="([^"]+)"', attrs)
+        title = title_m.group(1) if title_m else ""
+        
+        # Split indexes and content
+        h1_m = re.search(r'<h1>.*?</h1>', body)
+        if not h1_m:
+            return match.group(0)
+            
+        pre_h1 = body[:h1_m.start()]
+        h1_tag = body[h1_m.start():h1_m.end()]
+        entry_def = body[h1_m.end():]
+        
+        # Extract primary translation words from initial sentence
+        clean_def = re.sub(r'<[^>]+>', ' ', entry_def)
+        clean_def = re.sub(r'^[a-z]+\.\s*(?:\([^)]+\)\s*)?', '', clean_def.strip(), flags=re.IGNORECASE)
+        clean_def = re.sub(r'^1\.\s*', '', clean_def.strip())
+        first_clause = clean_def.split('.')[0]
+        
+        cyr_words = re.findall(r'[\u0400-\u04FF\u0500-\u052F\-]{2,}', first_clause)
+        tags = []
+        seen = set()
+        for w in cyr_words:
+            wc = w.strip('-')
+            if wc in bichig_mapping and wc not in seen:
+                seen.add(wc)
+                tags.append((wc, bichig_mapping[wc]['s'], bichig_mapping[wc].get('g', '')))
+                if len(tags) >= 3:
+                    break
+                    
+        # Bidirectional indexes
+        extra_indexes = []
+        for (cw, s, _) in tags:
+            extra_indexes.append(f'  <d:index d:value="{html.escape(cw, quote=True)}" d:title="{html.escape(title, quote=True)}"/>')
+            extra_indexes.append(f'  <d:index d:value="{html.escape(s, quote=True)}" d:title="{html.escape(title, quote=True)}"/>')
+            
+        extra_idx_str = ('\n' + '\n'.join(extra_indexes)) if extra_indexes else ''
+        
+        # Traditional script badges
+        bichig_bar = ''
+        if tags:
+            spans = []
+            for (cw, s, g) in tags:
+                g_str = f' ({html.escape(g)})' if g else ''
+                spans.append(
+                    f'<span class="bichig-tag">'
+                    f'<span class="bichig-glyph">{html.escape(s)}</span> '
+                    f'<span class="bichig-label">{html.escape(cw)}{g_str}</span>'
+                    f'</span>'
+                )
+            bichig_bar = f'\n  <div class="altangerel-bichig-bar">\n    ' + '\n    '.join(spans) + '\n  </div>'
+            
+        # Clean up definition tags
+        formatted_def = re.sub(r'<font color="blue">([^<]+)</font>', r'<span class="pos">\1</span>', entry_def)
+        formatted_def = re.sub(r'<br\s*>', '<br/>', formatted_def, flags=re.IGNORECASE)
+        formatted_def = re.sub(r'<br\s*/>', '<br/>', formatted_def, flags=re.IGNORECASE)
+        
+        return (
+            f'<d:entry {attrs}>\n'
+            f'{pre_h1.strip()}{extra_idx_str}\n'
+            f'  {h1_tag}{bichig_bar}\n'
+            f'  <div class="definition altangerel-body">\n    {formatted_def.strip()}\n  </div>\n'
+            f'  <div class="source-badge">Altangerel Damdinsuren — English-Mongolian Dictionary</div>\n'
+            f'</d:entry>'
+        )
+
+    # Process all entries
+    enhanced_content = entry_pattern.sub(process_entry, content)
+    
+    with open(final_xml_path, "w", encoding="utf-8") as fout:
+        fout.write(enhanced_content)
             
     print(f"[+] Wrote enhanced {final_xml_path} ({final_xml_path.stat().st_size / (1024*1024):.1f} MB)")
     

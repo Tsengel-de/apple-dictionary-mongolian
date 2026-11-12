@@ -61,3 +61,4 @@ console.log(`[+] Successfully converted ${convertedCount.toLocaleString()} words
 fs.writeFileSync(outputPath, JSON.stringify(mapping));
 const fileSizeMB = (fs.statSync(outputPath).size / (1024 * 1024)).toFixed(2);
 console.log(`[+] Wrote mapping to ${outputPath} (${fileSizeMB} MB)`);
+

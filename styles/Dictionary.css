@@ -103,6 +103,39 @@ h1 {
     margin-left: 6px;
 }
 
+/* Altangerel Traditional Script Translation Badges */
+.altangerel-bichig-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0 10px 0;
+}
+
+.bichig-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--badge-bg);
+    border: 1px solid var(--bichig-border);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.9em;
+    user-select: all;
+}
+
+.bichig-glyph {
+    font-family: "Mongolian Baiti", "Menk Garqag Tig", "Mongolian White", sans-serif;
+    font-size: 1.25em;
+    color: var(--accent-color);
+    margin-right: 6px;
+}
+
+.bichig-label {
+    color: var(--text-color);
+    font-size: 0.85em;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+}
+
 /* Part of Speech Badges (e.g. n., v., adj., suff., prep.) */
 .pos,
 font[color="blue"] {
@@ -147,7 +180,7 @@ i, em, .ex {
     margin-left: 4px;
 }
 
-.tsevel-body {
+.tsevel-body, .altangerel-body {
     font-size: 0.98em;
     line-height: 1.6;
 }
