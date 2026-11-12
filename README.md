@@ -1,181 +1,147 @@
-# Apple Dictionaries for Mongolian (macOS)
+# 🇲🇳 macOS-д Зориулсан Apple Монгол Толь Бичгийн Багц
+### Dual-Script Mongolian Apple Dictionaries (Altangerel & Tsevel)
 
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPLv3--or--later-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-macOS-lightgrey.svg)](https://apple.com)
 [![Initiative](https://img.shields.io/badge/Initiative-Mongolian%20Language%20for%20All-brightgreen.svg)](https://tsengel.de)
+[![Author: Tsengel](https://img.shields.io/badge/Author-Tsengel%20(tsengel.de)-red.svg)](https://tsengel.de)
 
-Native Apple Dictionary bundles (`.dictionary`) designed for macOS, providing instant offline lookups across all Apple applications (Safari, Pages, Mail, Preview, Terminal, Notes, and Spotlight).
+**Хэл сонгох / Languages / Sprachen:** [🇲🇳 Монгол](README.md) • [🇬🇧 English](README.en.md) • [🇩🇪 Deutsch](README.de.md)
 
-Part of the **Mongolian Language for All** open-source initiative by [Tsengel](https://tsengel.de).
+> **"Эх хэлнийхээ үгийн баялгийг технологийн дэвшилтэй уялдуулж, хүн бүрд хүртээмжтэй болгох нь бидний зорилго юм."**  
+> macOS үйлдлийн системд зориулсан Apple-ийн албан ёсны стандартын `.dictionary` толь бичгийн багц. Системийн түвшинд гүн суурилан, ямар ч програм дээр (Safari, Pages, Mail, Preview, Terminal, Notes) интернэтгүйгээр үгийн утга, орчуулгыг хормын төдийд харах боломжтой.
+
+Энэхүү төсөл нь [Цэнгэл (tsengel.de)](https://tsengel.de)-ийн **"Бүх Нийтийн Монгол Хэл"** (Mongolian Language for All) нээлттэй санаачилгын нэг хэсэг юм.
 
 ---
 
-## What is this? (Dictionary vs. Translator)
+## 🔍 Толь Бичиг гэж юу вэ? (Толь Бичиг vs. Орчуулагч)
 
-Many users confuse a **Dictionary** with a **Machine Translator**:
+Олон хэрэглэгчид **Толь бичиг (Dictionary)** болон **Машин орчуулагч (Google Translate / DeepL)** хоёрыг андуурдаг:
 
-| Feature | System Dictionary (This Project) | Machine Translator (Google Translate / NLLB) |
+| Шинж чанар | Системийн Толь Бичиг (Энэ төсөл) | Машин Орчуулагч (Google Translate / AI) |
 | :--- | :--- | :--- |
-| **Purpose** | In-depth meaning, grammar, proverbs, idioms, and usage of words | Translating full sentences and paragraphs from one language to another |
-| **Internet Required?** | **No (100% Offline)** — installed directly on your Mac | **Yes** — requires an active internet connection to cloud AI servers |
-| **Speed** | **Instant (0.001s)** popover window on selection | 1–3 seconds network latency |
-| **macOS Integration** | **Native Deep Integration**: Force-Click, 3-finger Trackpad tap, Spotlight | Separate browser tab or third-party web app |
+| **Зорилго** | Үгийн гүн тайлбар, зөв бичгийн дүрэм, зүйр цэцэн үг, хэлц, язгуур утга | Бүтэн өгүүлбэр, текстийг нэг хэлнээс нөгөөд шууд буулгах |
+| **Интернэт шаардах эсэх** | **Үгүй (100% Offline)** — Mac дотор шууд сууж ажиллана | **Тийм** — үүлэн серверийн холболт заавал шаардана |
+| **Хурд** | **Агшин зуур (0.001 секунд)** — хулгана очиход л гарна | 1–3 секундийн сүлжээний хүлээгдэл |
+| **macOS холболт** | **Apple-ийн системийн цөмтэй нэгдсэн**: Right-Click, Spotlight, Dictionary.app | Хөтчийн тусдаа таб эсвэл гуравдагч веб апп |
 
 ---
 
-## Real-World Usage on macOS
+## 📚 Багтсан Толь Бичгүүд
 
-### 1. Three-Finger Tap / Force Click (Look Up)
-When browsing a webpage in Safari, reading a PDF, or reviewing code:
-1. Move your cursor over any word (e.g., `horse` or `морь`).
-2. **Tap with three fingers on your Trackpad** (or **Force Click**).
-3. An elegant popover window appears immediately at your cursor showing the exact translation or explanatory definition without ever leaving your app.
-
-### 2. Spotlight Search (`Cmd + Space`)
-1. Press `Cmd + Space` anywhere on your desktop.
-2. Type an English or Mongolian word (e.g., `нохой` or `algorithm`).
-3. The dictionary definition appears directly in Spotlight search results. Press `Enter` to open it in full view.
-
-### 3. Dedicated Dictionary App (`Dictionary.app`)
-Open macOS built-in **Dictionary.app** to browse, search, and bookmark entries like a traditional encyclopedic book.
-
----
-
-## Included Dictionaries
-
-| Dictionary | Source / Author | Entries | Type | Bundle ID |
+| Толь бичиг | Зохиогч / Эх сурвалж | Үгийн тоо | Төрөл | Багцын ID |
 | :--- | :--- | :---: | :---: | :--- |
-| **English-Mongolian Dictionary** | Dr. Altangerel Damdinsuren | **25,252** | Bilingual (EN &rarr; MN) | `org.tsengel.dictionary.Altangerel-English-Mongolian` |
-| **Mongolian Explanatory Dictionary** | Academician Ya. Tsevel | **30,626** | Monolingual (MN &rarr; MN) | `org.tsengel.dictionary.Tsevel-Mongolian-Explanatory` |
-| **Dual Script & Galig** | Traditional Script (`ᠮᠣᠩᠭᠣᠯ`) & Classical Latin | Multi-script | Cyrillic + Hudum Bichig | Embedded in Header |
-| **Total Headwords & Definitions** | | **55,878+** | | |
+| **Англи-Монгол Толь Бичиг** | Д-р Ч. Алтангэрэл Дамдинсүрэн | **25,252** | Хоёр хэлний (EN &rarr; MN) | `org.tsengel.dictionary.Altangerel-English-Mongolian` |
+| **Монгол Хэлний Тайлбар Толь** | Академич Я. Цэвэл | **30,626** | Нэг хэлний тайлбар (MN &rarr; MN) | `org.tsengel.dictionary.Tsevel-Mongolian-Explanatory` |
+| **Хос бичиг & Латин галиг** | Худам Монгол бичиг (`ᠮᠣᠩᠭᠣᠯ`) & Сонгодог галиг | Хос бичигтэй | Кирилл + Худам Бичиг | Толгой үг бүрд суулгасан |
+| **Нийт үг ба тайлбарын тоо** | | **55,878+** | | |
 
 ---
 
-## Features
+## ✨ Онцлог Давуу Талууд
 
-- **Dual-Script Presentation (Cyrillic + Traditional Mongolian Script)**:
-  - Headwords feature vertical Traditional Script (`ᠮᠣᠷᠢ`) alongside standard Cyrillic (`морь`) and Classical Latin transliteration (*mori*).
-  - Searchable in both Cyrillic and Traditional Mongolian script.
-- **Modern San Francisco Typography & Styling**:
-  - Customized CSS optimized for Apple Retina displays and macOS San Francisco / PingHei typography.
-  - Grammatical part-of-speech badges (`n.`, `v.`, `adj.`, `suff.`).
-  - Distinct styling for example sentences, Mongolian idioms, and proverbs (*зүйр цэцэн үг*).
-- **Dark Mode Support**:
-  - Automatic theme switching matching macOS system appearance (`prefers-color-scheme`).
-- **100% Offline & Private**:
-  - Zero external network requests, zero telemetry, zero analytics. Runs completely on-device.
+- **Хос Бичгийн Хослол (Кирилл + Худам Монгол Бичиг)**:
+  - Толгой үг бүр босоо Худам монгол бичиг (`ᠮᠣᠷᠢ`), стандарт кирилл бичиг (`морь`) болон сонгодог латин галигтайгаа (*mori*) зэрэгцэн харагдана.
+  - Англи, кирилл болон худам монгол бичгийн алинаар нь ч хоёр урсгалаар хайх боломжтой (Bidirectional Indexing).
+- **Орчин Үеийн Apple Retina Дизайн**:
+  - macOS San Francisco фонт болон Retina дэлгэцэнд зориулсан цэвэр CSS загвар.
+  - Үгийн аймгийн тэмдэглэгээ (`n.`, `v.`, `adj.`, `suff.`).
+  - Жишээ өгүүлбэр, монгол ардын зүйр цэцэн үг, өвөрмөц хэлцийг тодруулсан онцгой загвар.
+- **Өдөр & Шөнийн Горим (High-Contrast Dark Mode)**:
+  - macOS-ийн өнгөний тохиргоог автоматаар мэдэрч, Dark Mode дээр тод цагаан текстээр өндөр тодосгогчтойгоор уншигдана.
+- **100% Аюулгүй, Хувийн Нууцлал Хадгалагдсан**:
+  - Ямар нэгэн сүлжээний холболт, хэрэглэгчийн өгөгдөл цуглуулах хэрэгсэл байхгүй. Компьютерт бүрэн офлайн ажиллана.
 
 ---
 
-## Quick Installation
+## 🚀 Хялбар Суулгах Заавар
 
-### Method 1: Native Disk Image `.dmg` (Recommended — Drag & Drop)
-1. Download **`Mongolian-Dictionaries-macOS.dmg`** from [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases) and double-click to mount it.
-2. Ensure the destination folder exists on your Mac. If your Mac does not have a `Dictionaries` folder yet (standard on fresh macOS Sonoma / Sequoia / Apple Silicon), run this once in Terminal:
+### Арга 1: Apple Native `.dmg` Дискээр Суулгах (Зөвлөмж — Drag & Drop)
+1. Хамгийн сүүлийн [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases)-ээс **`Mongolian-Dictionaries-macOS.dmg`** файлыг татаж аваад 2 товшиж нээнэ.
+2. Mac дээр тань очих хавтас байгаа эсэхийг баталгаажуулна. (Шинэ Apple Silicon M1/M2/M3/M4 болон macOS Sonoma/Sequoia дээр энэ хавтас анхнаасаа байдаггүй тул Terminal дээр ганцхан удаа дараах тушаалыг ажиллуулна):
    ```bash
    mkdir -p ~/Library/Dictionaries
    ```
-   *(Or in Finder: press `Cmd + Shift + G`, enter `~/Library`, and create a new folder named `Dictionaries`)*.
-3. Drag both `.dictionary` bundles into `~/Library/Dictionaries/` (or the `Dictionaries` shortcut in the DMG).
+   *(Эсвэл Finder дээр `Cmd + Shift + G` дараад `~/Library` гэж бичиж ороод `Dictionaries` нэртэй шинэ хавтас үүсгэж болно)*.
+3. DMG доторх хоёр `.dictionary` багцыг **`~/Library/Dictionaries/`** хавтас руу чирж хуулна.
 
-### Method 2: Standalone `.zip` Archives
-1. Download `Mongolian-English-Altangerel.dictionary.zip` and `Mongolian-Tsevel-Explanatory.dictionary.zip`.
-2. Extract the archives.
-3. Copy the extracted `.dictionary` folders into `~/Library/Dictionaries/`:
+### Арга 2: Бие Даасан `.zip` Архиваар Суулгах
+1. `Mongolian-English-Altangerel.dictionary.zip` болон `Mongolian-Tsevel-Explanatory.dictionary.zip` файлуудыг татаж авна.
+2. Архивыг задлаад гарч ирсэн хоёр `.dictionary` хавтсыг `~/Library/Dictionaries/` руу хуулна:
    ```bash
    mkdir -p ~/Library/Dictionaries
    cp -R Mongolian-*.dictionary ~/Library/Dictionaries/
    ```
 
-### Step 3: Enable in Dictionary.app
-1. Launch **Dictionary.app** (via Spotlight or Applications folder).
-2. Open Settings (`Cmd + ,`).
-3. Scroll through the list and check the boxes next to:
-   - **English-Mongolian Dictionary (Altangerel)**
-   - **Монгол хэлний тайлбар толь (Цэвэл)**
-4. Drag them to your preferred priority order.
+### Толь бичгээ Dictionary.app дотроос идэвхжүүлэх:
+1. Mac дээрээ **Dictionary.app**-ийг нээнэ (Spotlight эсвэл Applications дотроос).
+2. Тохиргоо цэсийг нээнэ: **`Cmd + ,`**.
+3. Жагсаалтаас дараах хоёр толийг чагталж идэвхжүүлнэ:
+   - ☑️ **English-Mongolian Dictionary (Altangerel)**
+   - ☑️ **Монгол хэлний тайлбар толь (Цэвэл)**
+4. Хүсвэл жагсаалт дотор нь чирж дээш доош байрлуулан эрэмбэлж болно.
 
 ---
 
-## How to Use Everywhere on macOS
+## 🎯 macOS Дээр Хэрхэн Хялбар Ашиглах вэ?
 
-Once enabled, your Mongolian dictionaries work system-wide across all Mac applications (Safari, Pages, Notes, Mail, Books, Terminal, TextEdit):
+Идэвхжүүлсний дараа таны Mac-ийн бүх програм дээр шууд ажиллана:
 
-### 1. Instant Look Up via Right-Click (Recommended)
-1. Select or hover over any word in Safari or any app.
-2. **Right-click** and select **Look Up "..."**.
-3. A popup window appears instantly! At the bottom of the popup, click on **English-Mongolian (Altangerel)** or **Цэвэл** to view the dual-script definitions.
+### 1. Хулганы Баруун Товчоор Хайх (Look Up — Хамгийн шилдэг арга)
+1. Safari, Pages, Notes, Mail эсвэл ямар ч програм дээр үгээ сонгоно (эсвэл заагчаа аваачна).
+2. **Хулганы баруун товч (Right-Click)** дараад **Look Up "..."** сонгоно.
+3. Тухайн үгийн хажууд бяцхан цонх үсрэн гарч ирнэ. Доод талын жагсаалтаас **English-Mongolian** эсвэл **Цэвэл** дээр дарж хос бичигтэй тайлбарыг харна.
 
-### 2. Global Keyboard Shortcut
-- Place your cursor over any word and press:
+### 2. Гарын Түргэн Товчлол (Global Keyboard Shortcut)
+- Дурын үгэн дээр заагчаа тавиад дараах товчлуурыг зэрэг дарна:
   ```text
   Ctrl + Cmd + D
   ```
-  The native Apple Dictionary popup will open immediately.
+  Толь бичгийн цонх шууд дэлгэгдэнэ.
 
-### 3. Trackpad Look Up (Optional)
-- Hover over any word and **Tap with 3 fingers** (or **Force Click with 1 finger** if configured in *System Settings $\rightarrow$ Trackpad $\rightarrow$ Point & Click $\rightarrow$ Look up & data detectors*).
+### 3. Trackpad Товшилт (Сонголттой)
+- Хэрэв хүсвэл Trackpad дээрээ үгэн дээр 3 хуруугаараа зөөлөн товшиж (Tap with 3 fingers) эсвэл чанга дарж (Force Click) хайж болно (*System Settings $\rightarrow$ Trackpad $\rightarrow$ Point & Click дотроос тохируулна*).
 
-### 4. macOS Spotlight Integration
-- Press `Cmd + Space` (Spotlight), type any English, Cyrillic, or Traditional Mongolian word (e.g., `морь` or `ᠬᠦᠰᠡᠯ`), and preview definitions directly in Spotlight without opening any app.
+### 4. Apple Spotlight Хайлт (`Cmd + Space`)
+- `Cmd + Space` дараад дурын англи, кирилл эсвэл худам монгол үг (жишээ нь: `морь`, `computer`, `ᠬᠦᠰᠡᠯ`) шивэхэд Spotlight дотор толь бичгийн үр дүн шууд гарч ирнэ.
 
 ---
 
-## Building from Source
+## 🛠️ Эх Кодоос Угсрах (Building from Source)
 
-### Prerequisites
+### Шаардлагатай багажууд:
 - Python 3.10+
-- Node.js 18+ (for script enrichment)
-- `pip install pyglossary lxml beautifulsoup4`
-- macOS with Xcode Command Line Tools and Apple Dictionary Development Kit (DDK).
+- Node.js 18+ (Худам монгол бичгийн хөрвүүлэгчид)
+- Apple Dictionary Development Kit (DDK) болон Xcode Command Line Tools.
 
-### Build Steps
+### Угсрах алхмууд:
+```bash
+git clone https://github.com/Tsengel-de/apple-dictionary-mongolian.git
+cd apple-dictionary-mongolian
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Tsengel-de/apple-dictionary-mongolian.git
-   cd apple-dictionary-mongolian
-   ```
+# Python сангууд суулгах
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 
-2. **Generate Apple Dictionary XML and assets**:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   pip install -r requirements.txt
-   python3 src/build_dictionary.py --dict all
-   ```
-   This generates the Apple DDK input sources in:
-   - `build/Mongolian-English-Altangerel/`
-   - `build/Mongolian-Tsevel-Explanatory/`
+# Apple Dictionary XML болон хөрвүүлэлтийг бэлтгэх
+python3 src/build_dictionary.py --dict all
 
-3. **Compile `.dictionary` bundles (on macOS)**:
-   ```bash
-   make -C build/Mongolian-English-Altangerel all
-   make -C build/Mongolian-Tsevel-Explanatory all
-   ```
-
-4. **Install directly into user library**:
-   ```bash
-   make -C build/Mongolian-English-Altangerel install
-   make -C build/Mongolian-Tsevel-Explanatory install
-   ```
+# macOS дээр компиляци хийж DMG үүсгэх
+make -C build/Mongolian-English-Altangerel all
+make -C build/Mongolian-Tsevel-Explanatory all
+bash scripts/build_dmg.sh
+```
 
 ---
 
-## Credits & Acknowledgements
+## 📜 Зохиогчийн Эрх ба Талархал
 
-- **Dr. Altangerel Damdinsuren**: Author of the English-Mongolian Dictionary, open-sourced for the Mongolian people.
-- **Academician Ya. Tsevel**: Author of the foundational "Монгол хэлний товч тайлбар толь" (1966, Institute of Language and Literature, Mongolian Academy of Sciences).
-- **Ochirkhuyag.L ([@ochko](https://github.com/ochko))**: Digitization and StarDict conversion work.
-- **Tsengel ([tsengel.de](https://tsengel.de))**: System architecture, Apple DDK packaging, dark mode styling, and ongoing maintenance.
+- **Эх Толь Бичгүүд**:
+  - *Англи-Монгол Толь Бичиг* — Доктор Ч. Алтангэрэл Дамдинсүрэн.
+  - *Монгол Хэлний Тайлбар Толь* — Академич Ядамжавын Цэвэл.
+- **Худам Бичгийн Хөрвүүлэгч**: `@gege-mn/gege-converter` санг ашиглав.
+- **Програм Хангамж ба Загвар**: [GNU General Public License v3.0 (GPLv3)](LICENSE) лицензтэй. Зохиогч: Цэнгэл (tsengel@tsengel.de | [tsengel.de](https://tsengel.de)).
 
----
-
-## License
-
-This project is licensed under the **GNU General Public License v3.0 (or later)**. See the [LICENSE](LICENSE) file for complete details.
-
-### Commercial Licensing
-For commercial redistribution or custom proprietary integration licensing, contact:
-`tsengel@tsengel.de` | [tsengel.de](https://tsengel.de)
+*Монгол хэл, бичиг маань дижитал ертөнцөд мөнхөд гялалзах болтугай! 🇲🇳*
