@@ -70,23 +70,31 @@ Open macOS built-in **Dictionary.app** to browse, search, and bookmark entries l
 
 ## Quick Installation
 
-### Step 1: Download
-Download the precompiled `.dictionary.zip` packages from the latest [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases):
-- `Mongolian-English-Altangerel.dictionary.zip`
-- `Mongolian-Tsevel-Explanatory.dictionary.zip`
+### Method 1: Apple Native `.pkg` Installer (Easiest — Automatic Folder Creation)
+1. Download **`Mongolian-Dictionaries-macOS.pkg`** from the latest [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases).
+2. Double-click the `.pkg` file to open macOS Installer.
+3. Follow the on-screen steps. macOS will automatically create the system dictionary directory (`/Library/Dictionaries/`) and install both dictionaries.
 
-### Step 2: Copy to Dictionary Folder
-1. Unzip the downloaded archives to extract the `.dictionary` bundles:
-   - `Mongolian-English-Altangerel.dictionary`
-   - `Mongolian-Tsevel-Explanatory.dictionary`
-2. Open **Finder**, press `Cmd + Shift + G`, paste:
+### Method 2: Disk Image `.dmg` (Drag & Drop)
+1. Download **`Mongolian-Dictionaries-macOS.dmg`** and double-click to mount it.
+2. Drag both `.dictionary` bundles into the **`Dictionaries`** shortcut folder.
+   > **Note for Apple Silicon / macOS Sonoma & Sequoia:**  
+   > If your Mac does not have a `Dictionaries` folder yet, create it once via Terminal:
+   > ```bash
+   > mkdir -p ~/Library/Dictionaries
+   > ```
+   > or in Finder press `Cmd + Shift + G`, enter `~/Library`, and create a new folder named `Dictionaries`. Then drag the `.dictionary` bundles into it.
+
+### Method 3: Standalone `.zip` Archives
+1. Download `Mongolian-English-Altangerel.dictionary.zip` and `Mongolian-Tsevel-Explanatory.dictionary.zip`.
+2. Extract the archives.
+3. Copy the extracted `.dictionary` folders into `~/Library/Dictionaries/`:
    ```bash
-   ~/Library/Dictionaries/
+   mkdir -p ~/Library/Dictionaries
+   cp -R Mongolian-*.dictionary ~/Library/Dictionaries/
    ```
-   and press Enter.
-3. Drag and drop the `.dictionary` folders into `~/Library/Dictionaries/`.
 
-### Step 3: Enable in Dictionary.app
+### Step: Enable in Dictionary.app
 1. Launch **Dictionary.app** (via Spotlight or Applications folder).
 2. Open Settings (`Cmd + ,`).
 3. Scroll through the list and check the boxes next to:

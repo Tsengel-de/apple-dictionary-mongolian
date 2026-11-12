@@ -123,12 +123,15 @@ jobs:
           # Build DMG using script
           bash scripts/build_dmg.sh
 
+          # Build PKG installer using script
+          bash scripts/build_pkg.sh
+
           cd dist
-          shasum -a 256 *.zip *.dmg > SHA256SUMS.txt
+          shasum -a 256 *.zip *.dmg *.pkg > SHA256SUMS.txt
           cat SHA256SUMS.txt
           ls -lh
 
-      - name: Upload compiled binary bundles and DMG
+      - name: Upload compiled binary bundles, DMG and PKG
         uses: actions/upload-artifact@v4
         with:
           name: precompiled-dictionaries
@@ -173,9 +176,10 @@ jobs:
              - **30,626 entries**
              - Dual-script vertical ribbon layout (`vertical-lr`), classical galig, proverbs, idioms, and grammatical categories.
 
-          ### Easy Installation on macOS:
-          - **Option 1 (Recommended)**: Download `Mongolian-Dictionaries-macOS.dmg`, open it, and double-click **`Install.command`**!
-          - **Option 2**: Download the `.dictionary.zip` files, unzip, and copy to `~/Library/Dictionaries/`.
+          ### Installation Options on macOS:
+          - **Option 1 (Automated .pkg Installer)**: Download `Mongolian-Dictionaries-macOS.pkg` and double-click to install. It automatically creates the destination directory and installs to `/Library/Dictionaries/`.
+          - **Option 2 (Native DMG Drag-and-Drop)**: Download `Mongolian-Dictionaries-macOS.dmg`, mount it, and drag the `.dictionary` bundles into `Dictionaries` (or your `~/Library/Dictionaries/`).
+          - **Option 3 (ZIP Archives)**: Download the `.dictionary.zip` files, unzip, and copy to `~/Library/Dictionaries/`.
 
           Part of the **Mongolian Language for All** initiative (https://tsengel.de).
           EOF
@@ -184,6 +188,7 @@ jobs:
             --title "Apple Dictionaries for Mongolian $TAG_NAME" \
             --notes-file release_notes.md \
             dist/Mongolian-Dictionaries-macOS.dmg \
+            dist/Mongolian-Dictionaries-macOS.pkg \
             dist/Mongolian-English-Altangerel.dictionary.zip \
             dist/Mongolian-Tsevel-Explanatory.dictionary.zip \
             dist/SHA256SUMS.txt
