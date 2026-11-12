@@ -1,0 +1,117 @@
+@charset "UTF-8";
+@namespace d url(http://www.apple.com/DTDs/DictionaryService-1.0.rng);
+
+/* Apple Dictionary Modern Typography & Theme Support
+   Part of the "Mongolian Language for All" initiative (tsengel.de)
+*/
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --accent-color: #0071e3;
+    --badge-bg: #eef3fc;
+    --badge-text: #1967d2;
+    --example-color: #48484a;
+    --border-color: #e5e5ea;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1c1c1e;
+        --text-color: #f5f5f7;
+        --text-secondary: #98989d;
+        --accent-color: #2997ff;
+        --badge-bg: #1c2e4a;
+        --badge-text: #8ab4f8;
+        --example-color: #aeaeb2;
+        --border-color: #38383a;
+    }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+                 "PingFang SC", "Mongolian Baiti", "Menk Garqag Tig", sans-serif;
+    color: var(--text-color);
+    background-color: transparent;
+    line-height: 1.55;
+    font-size: 14px;
+    margin: 0;
+    padding: 2px 4px;
+    -webkit-font-smoothing: antialiased;
+}
+
+d|entry {
+    margin-bottom: 1.2em;
+}
+
+h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    font-size: 1.45em;
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: -0.015em;
+    margin: 0 0 6px 0;
+    padding: 0;
+}
+
+/* Part of Speech Badges (e.g. n., v., adj., suff., prep.) */
+.pos,
+font[color="blue"] {
+    display: inline-block;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    font-size: 0.82em;
+    font-weight: 600;
+    font-style: normal;
+    background-color: var(--badge-bg);
+    color: var(--badge-text) !important;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+    text-transform: none;
+    vertical-align: baseline;
+}
+
+/* Definition lists and sections */
+ol, ul {
+    margin: 6px 0 6px 20px;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+p {
+    margin: 4px 0 8px 0;
+}
+
+/* Examples, proverbs, idioms */
+i, em, .ex {
+    color: var(--example-color);
+    font-style: italic;
+}
+
+.pronunciation, .pr {
+    color: var(--text-secondary);
+    font-family: "Lucida Grande", "SF Pro Text", sans-serif;
+    font-size: 0.9em;
+    margin-left: 4px;
+}
+
+.tsevel-proverb {
+    display: block;
+    margin: 4px 0;
+    padding-left: 8px;
+    border-left: 2px solid var(--accent-color);
+    color: var(--example-color);
+    font-style: italic;
+}
+
+.source-badge {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.75em;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}

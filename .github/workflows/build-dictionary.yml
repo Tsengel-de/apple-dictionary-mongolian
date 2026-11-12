@@ -1,0 +1,188 @@
+name: Build Apple Dictionaries for macOS
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Create GitHub Release with precompiled .dictionary bundles"
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  generate-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pyglossary lxml beautifulsoup4
+
+      - name: Build Apple Dictionary XML and assets
+        run: |
+          python3 src/build_dictionary.py --dict all
+
+      - name: Validate XML syntax
+        run: |
+          python3 -c "
+          import xml.etree.ElementTree as ET
+          for path in [
+              'build/Mongolian-English-Altangerel/Mongolian-English-Altangerel.xml',
+              'build/Mongolian-Tsevel-Explanatory/Mongolian-Tsevel-Explanatory.xml'
+          ]:
+              print('Verifying XML:', path)
+              context = ET.iterparse(path, events=('end',))
+              count = sum(1 for _, elem in context if elem.tag.endswith('entry'))
+              print(f'  [PASS] {count:,} entries parsed.')
+          "
+
+      - name: Upload generated source artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: apple-dict-sources
+          path: build/
+          retention-days: 2
+
+  compile-macos:
+    needs: generate-sources
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download generated dictionary sources
+        uses: actions/download-artifact@v4
+        with:
+          name: apple-dict-sources
+          path: build/
+
+      - name: Checkout Apple Dictionary Development Kit
+        uses: actions/checkout@v4
+        with:
+          repository: nanoskript/dictionary-development-kit
+          path: ddk
+
+      - name: Make DDK binaries executable
+        run: chmod +x ddk/bin/*
+
+      - name: Build Altangerel English-Mongolian Dictionary
+        run: |
+          cd build/Mongolian-English-Altangerel
+          export DICT_DEV_KIT_OBJ_DIR="$(pwd)/objects"
+          ../../ddk/bin/build_dict.sh "Mongolian-English-Altangerel" \
+            "Mongolian-English-Altangerel.xml" \
+            "DefaultStyle.css" \
+            "Info.plist"
+          test -d "objects/Mongolian-English-Altangerel.dictionary/Contents" || exit 1
+          echo "Altangerel build success!"
+
+      - name: Build Tsevel Mongolian Explanatory Dictionary
+        run: |
+          cd build/Mongolian-Tsevel-Explanatory
+          export DICT_DEV_KIT_OBJ_DIR="$(pwd)/objects"
+          ../../ddk/bin/build_dict.sh "Mongolian-Tsevel-Explanatory" \
+            "Mongolian-Tsevel-Explanatory.xml" \
+            "DefaultStyle.css" \
+            "Info.plist"
+          test -d "objects/Mongolian-Tsevel-Explanatory.dictionary/Contents" || exit 1
+          echo "Tsevel build success!"
+
+      - name: Package bundles into zip archives
+        run: |
+          mkdir -p dist
+          ditto -c -k --sequesterRsrc --keepParent \
+            "build/Mongolian-English-Altangerel/objects/Mongolian-English-Altangerel.dictionary" \
+            dist/Mongolian-English-Altangerel.dictionary.zip
+            
+          ditto -c -k --sequesterRsrc --keepParent \
+            "build/Mongolian-Tsevel-Explanatory/objects/Mongolian-Tsevel-Explanatory.dictionary" \
+            dist/Mongolian-Tsevel-Explanatory.dictionary.zip
+            
+          cd dist
+          shasum -a 256 *.zip > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+          ls -lh
+
+      - name: Upload compiled binary bundles
+        uses: actions/upload-artifact@v4
+        with:
+          name: precompiled-dictionaries
+          path: dist/
+          retention-days: 14
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish)
+    needs: compile-macos
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download compiled dictionaries
+        uses: actions/download-artifact@v4
+        with:
+          name: precompiled-dictionaries
+          path: dist/
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG_NAME="${{ github.ref_name }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -z "$TAG_NAME" ]; then
+            TAG_NAME="v1.0.0"
+          fi
+          
+          cat << 'EOF' > release_notes.md
+          # Apple Dictionaries for macOS (Mongolian Suite)
+
+          Native macOS dictionary bundles featuring seamless **Spotlight search**, **3-finger tap Lookup**, and **Safari Force-Click** integration.
+
+          ### Included Dictionaries:
+          1. **English-Mongolian Dictionary (Dr. Altangerel Damdinsuren)**
+             - **25,252 entries**
+             - Comprehensive English headwords with Mongolian Cyrillic definitions, parts-of-speech badges, and usage examples.
+          2. **Mongolian Explanatory Dictionary (Ya. Tsevel / Монгол хэлний их тайлбар толь)**
+             - **30,626 entries**
+             - Authoritative monolingual definitions, proverbs, idioms, and grammatical categories.
+
+          ### Installation on macOS:
+          1. Download and unzip the `.dictionary.zip` files below.
+          2. Open **Finder**, press `Cmd + Shift + G`, and navigate to:
+             `~/Library/Dictionaries/`
+          3. Drag and drop the `.dictionary` bundles into `~/Library/Dictionaries/`.
+          4. Open **Dictionary.app**, go to **Settings** (`Cmd + ,`), and enable:
+             - `English-Mongolian Dictionary (Altangerel)`
+             - `Монгол хэлний тайлбар толь (Цэвэл)`
+
+          Part of the **Mongolian Language for All** initiative (https://tsengel.de).
+          EOF
+
+          gh release create "$TAG_NAME" \
+            --title "Apple Dictionaries for Mongolian $TAG_NAME" \
+            --notes-file release_notes.md \
+            dist/Mongolian-English-Altangerel.dictionary.zip \
+            dist/Mongolian-Tsevel-Explanatory.dictionary.zip \
+            dist/SHA256SUMS.txt
