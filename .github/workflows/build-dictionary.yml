@@ -35,7 +35,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install pyglossary lxml beautifulsoup4
+          pip install -r requirements.txt
 
       - name: Build Apple Dictionary XML and assets
         run: |
