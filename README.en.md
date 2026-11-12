@@ -63,7 +63,7 @@ Many users confuse a **Dictionary** with a **Machine Translator**:
    mkdir -p ~/Library/Dictionaries
    ```
    *(Or in Finder: press `Cmd + Shift + G`, enter `~/Library`, and create a new folder named `Dictionaries`)*.
-3. Drag both `.dictionary` bundles into `~/Library/Dictionaries/` (or the `Dictionaries` shortcut in the DMG).
+3. Drag both `.dictionary` bundles into your `~/Library/Dictionaries/` folder.
 
 ### Method 2: Standalone `.zip` Archives
 1. Download `Mongolian-English-Altangerel.dictionary.zip` and `Mongolian-Tsevel-Explanatory.dictionary.zip`.

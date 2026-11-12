@@ -17,9 +17,6 @@ echo "[*] Staging dictionary bundles..."
 cp -R "build/Mongolian-English-Altangerel/objects/Mongolian-English-Altangerel.dictionary" "${DMG_STAGE}/"
 cp -R "build/Mongolian-Tsevel-Explanatory/objects/Mongolian-Tsevel-Explanatory.dictionary" "${DMG_STAGE}/"
 
-echo "[*] Creating symlink to Dictionaries for Drag & Drop..."
-ln -s /Library/Dictionaries "${DMG_STAGE}/Dictionaries"
-
 echo "[*] Adding README.txt..."
 cat << 'EOF' > "${DMG_STAGE}/README.txt"
 Mongolian Dictionaries for macOS
@@ -29,15 +26,15 @@ Part of the "Mongolian Language for All" initiative (https://tsengel.de)
 
 EASY INSTALLATION:
 ------------------
-1. Ensure the Dictionaries folder exists on your Mac:
-   Open Terminal and run:
-     mkdir -p ~/Library/Dictionaries
+1. Open Finder, press:
+     Cmd + Shift + G
+   Type:
+     ~/Library/Dictionaries
+   and press Enter.
 
-   (Or in Finder: press Cmd + Shift + G, type ~/Library, and create a folder named "Dictionaries")
+   (If the folder does not exist yet, run 'mkdir -p ~/Library/Dictionaries' in Terminal).
 
-2. Drag both .dictionary bundles into:
-     ~/Library/Dictionaries/
-   (Or drop into the "Dictionaries" shortcut if /Library/Dictionaries exists)
+2. Drag both .dictionary bundles from this disk into your ~/Library/Dictionaries/ folder.
 
 3. Open Dictionary.app:
    - Press Cmd + , to open Settings

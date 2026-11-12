@@ -64,7 +64,7 @@ Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Überset
    mkdir -p ~/Library/Dictionaries
    ```
    *(Oder im Finder: `Cmd + Shift + G` drücken, `~/Library` eingeben und einen neuen Ordner namens `Dictionaries` anlegen)*.
-3. Ziehen Sie beide `.dictionary`-Pakete per Drag & Drop in den Ordner **`~/Library/Dictionaries/`** (oder auf die Verknüpfung im DMG).
+3. Ziehen Sie beide `.dictionary`-Pakete per Drag & Drop in Ihren Ordner **`~/Library/Dictionaries/`**.
 
 ### Methode 2: ZIP-Archive
 1. Laden Sie `Mongolian-English-Altangerel.dictionary.zip` und `Mongolian-Tsevel-Explanatory.dictionary.zip` herunter.
