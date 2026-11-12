@@ -1,19 +1,26 @@
 {
   "name": "apple-dictionary-mongolian",
   "version": "1.0.0",
-  "description": "[![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPLv3--or--later-blue.svg)](LICENSE) [![Platform](https://img.shields.io/badge/Platform-macOS-lightgrey.svg)](https://apple.com) [![Initiative](https://img.shields.io/badge/Initiative-Mongolian%20Language%20for%20All-brightgreen.svg)](https://tsengel.de)",
-  "main": "index.js",
+  "description": "Dual-Script Apple Dictionaries for macOS (Altangerel & Tsevel) with Traditional Mongolian Script and Classical Latin Galig",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:bichig": "node scripts/generate_bichig_mapping.mjs",
+    "build:dict": "python3 src/build_dictionary.py --dict all"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tsengel-de/apple-dictionary-mongolian.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
+  "keywords": [
+    "mongolian",
+    "apple-dictionary",
+    "macos",
+    "hudum-bichig",
+    "traditional-mongolian",
+    "altangerel",
+    "tsevel"
+  ],
+  "author": "Tsengel <tsengel@tsengel.de> (https://tsengel.de)",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/Tsengel-de/apple-dictionary-mongolian/issues"
   },
