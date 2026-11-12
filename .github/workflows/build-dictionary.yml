@@ -187,4 +187,5 @@ jobs:
             dist/Mongolian-Dictionaries-macOS.dmg \
             dist/Mongolian-English-Altangerel.dictionary.zip \
             dist/Mongolian-Tsevel-Explanatory.dictionary.zip \
-            dist/SHA256SUMS.txt
+            dist/SHA256SUMS.txt \
+            || (gh release edit "$TAG_NAME" --notes-file release_notes.md && gh release upload "$TAG_NAME" dist/* --clobber)
