@@ -70,22 +70,16 @@ Open macOS built-in **Dictionary.app** to browse, search, and bookmark entries l
 
 ## Quick Installation
 
-### Method 1: Apple Native `.pkg` Installer (Easiest — Automatic Folder Creation)
-1. Download **`Mongolian-Dictionaries-macOS.pkg`** from the latest [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases).
-2. Double-click the `.pkg` file to open macOS Installer.
-3. Follow the on-screen steps. macOS will automatically create the system dictionary directory (`/Library/Dictionaries/`) and install both dictionaries.
+### Method 1: Native Disk Image `.dmg` (Recommended — Drag & Drop)
+1. Download **`Mongolian-Dictionaries-macOS.dmg`** from [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases) and double-click to mount it.
+2. Ensure the destination folder exists on your Mac. If your Mac does not have a `Dictionaries` folder yet (standard on fresh macOS Sonoma / Sequoia / Apple Silicon), run this once in Terminal:
+   ```bash
+   mkdir -p ~/Library/Dictionaries
+   ```
+   *(Or in Finder: press `Cmd + Shift + G`, enter `~/Library`, and create a new folder named `Dictionaries`)*.
+3. Drag both `.dictionary` bundles into `~/Library/Dictionaries/` (or the `Dictionaries` shortcut in the DMG).
 
-### Method 2: Disk Image `.dmg` (Drag & Drop)
-1. Download **`Mongolian-Dictionaries-macOS.dmg`** and double-click to mount it.
-2. Drag both `.dictionary` bundles into the **`Dictionaries`** shortcut folder.
-   > **Note for Apple Silicon / macOS Sonoma & Sequoia:**  
-   > If your Mac does not have a `Dictionaries` folder yet, create it once via Terminal:
-   > ```bash
-   > mkdir -p ~/Library/Dictionaries
-   > ```
-   > or in Finder press `Cmd + Shift + G`, enter `~/Library`, and create a new folder named `Dictionaries`. Then drag the `.dictionary` bundles into it.
-
-### Method 3: Standalone `.zip` Archives
+### Method 2: Standalone `.zip` Archives
 1. Download `Mongolian-English-Altangerel.dictionary.zip` and `Mongolian-Tsevel-Explanatory.dictionary.zip`.
 2. Extract the archives.
 3. Copy the extracted `.dictionary` folders into `~/Library/Dictionaries/`:
@@ -94,7 +88,7 @@ Open macOS built-in **Dictionary.app** to browse, search, and bookmark entries l
    cp -R Mongolian-*.dictionary ~/Library/Dictionaries/
    ```
 
-### Step: Enable in Dictionary.app
+### Step 3: Enable in Dictionary.app
 1. Launch **Dictionary.app** (via Spotlight or Applications folder).
 2. Open Settings (`Cmd + ,`).
 3. Scroll through the list and check the boxes next to:
