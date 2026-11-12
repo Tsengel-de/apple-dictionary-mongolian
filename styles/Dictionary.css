@@ -2,6 +2,7 @@
 @namespace d url(http://www.apple.com/DTDs/DictionaryService-1.0.rng);
 
 /* Apple Dictionary Modern Typography & Theme Support
+   Dual-Script (Cyrillic + Traditional Mongolian Script)
    Part of the "Mongolian Language for All" initiative (tsengel.de)
 */
 
@@ -10,8 +11,9 @@
     --text-color: #1d1d1f;
     --text-secondary: #6e6e73;
     --accent-color: #0071e3;
-    --badge-bg: #eef3fc;
+    --badge-bg: #f2f5fb;
     --badge-text: #1967d2;
+    --bichig-border: #d0e1fd;
     --example-color: #48484a;
     --border-color: #e5e5ea;
 }
@@ -22,8 +24,9 @@
         --text-color: #f5f5f7;
         --text-secondary: #98989d;
         --accent-color: #2997ff;
-        --badge-bg: #1c2e4a;
+        --badge-bg: #1a2a44;
         --badge-text: #8ab4f8;
+        --bichig-border: #2c4266;
         --example-color: #aeaeb2;
         --border-color: #38383a;
     }
@@ -42,7 +45,43 @@ body {
 }
 
 d|entry {
-    margin-bottom: 1.2em;
+    margin-bottom: 1.4em;
+    padding-bottom: 0.8em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Dual-Script Header Layout (Traditional Vertical Ribbon + Cyrillic Title) */
+.entry-header {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 0 8px 0;
+}
+
+.bichig-column {
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    font-family: "Mongolian Baiti", "Menk Garqag Tig", "Mongolian White", sans-serif;
+    font-size: 1.4em;
+    line-height: 1.15;
+    color: var(--accent-color);
+    background-color: var(--badge-bg);
+    border: 1px solid var(--bichig-border);
+    border-radius: 6px;
+    padding: 8px 6px;
+    min-height: 48px;
+    max-height: 140px;
+    flex-shrink: 0;
+    user-select: all;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 h1 {
@@ -51,8 +90,17 @@ h1 {
     font-weight: 600;
     color: var(--text-color);
     letter-spacing: -0.015em;
-    margin: 0 0 6px 0;
+    margin: 0 0 4px 0;
     padding: 0;
+}
+
+.galig {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    font-size: 0.68em;
+    font-weight: normal;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-left: 6px;
 }
 
 /* Part of Speech Badges (e.g. n., v., adj., suff., prep.) */
@@ -99,19 +147,15 @@ i, em, .ex {
     margin-left: 4px;
 }
 
-.tsevel-proverb {
-    display: block;
-    margin: 4px 0;
-    padding-left: 8px;
-    border-left: 2px solid var(--accent-color);
-    color: var(--example-color);
-    font-style: italic;
+.tsevel-body {
+    font-size: 0.98em;
+    line-height: 1.6;
 }
 
 .source-badge {
     display: inline-block;
-    margin-top: 10px;
-    font-size: 0.75em;
+    margin-top: 8px;
+    font-size: 0.72em;
     color: var(--text-secondary);
-    opacity: 0.8;
+    opacity: 0.75;
 }

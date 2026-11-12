@@ -4,9 +4,40 @@
 [![Platform](https://img.shields.io/badge/Platform-macOS-lightgrey.svg)](https://apple.com)
 [![Initiative](https://img.shields.io/badge/Initiative-Mongolian%20Language%20for%20All-brightgreen.svg)](https://tsengel.de)
 
-Native Apple Dictionary bundles (`.dictionary`) designed for macOS, providing instant offline lookups across all Apple applications (Safari, Pages, Mail, Preview, Terminal, and Spotlight).
+Native Apple Dictionary bundles (`.dictionary`) designed for macOS, providing instant offline lookups across all Apple applications (Safari, Pages, Mail, Preview, Terminal, Notes, and Spotlight).
 
 Part of the **Mongolian Language for All** open-source initiative by [Tsengel](https://tsengel.de).
+
+---
+
+## What is this? (Dictionary vs. Translator)
+
+Many users confuse a **Dictionary** with a **Machine Translator**:
+
+| Feature | System Dictionary (This Project) | Machine Translator (Google Translate / NLLB) |
+| :--- | :--- | :--- |
+| **Purpose** | In-depth meaning, grammar, proverbs, idioms, and usage of words | Translating full sentences and paragraphs from one language to another |
+| **Internet Required?** | **No (100% Offline)** — installed directly on your Mac | **Yes** — requires an active internet connection to cloud AI servers |
+| **Speed** | **Instant (0.001s)** popover window on selection | 1–3 seconds network latency |
+| **macOS Integration** | **Native Deep Integration**: Force-Click, 3-finger Trackpad tap, Spotlight | Separate browser tab or third-party web app |
+
+---
+
+## Real-World Usage on macOS
+
+### 1. Three-Finger Tap / Force Click (Look Up)
+When browsing a webpage in Safari, reading a PDF, or reviewing code:
+1. Move your cursor over any word (e.g., `horse` or `морь`).
+2. **Tap with three fingers on your Trackpad** (or **Force Click**).
+3. An elegant popover window appears immediately at your cursor showing the exact translation or explanatory definition without ever leaving your app.
+
+### 2. Spotlight Search (`Cmd + Space`)
+1. Press `Cmd + Space` anywhere on your desktop.
+2. Type an English or Mongolian word (e.g., `нохой` or `algorithm`).
+3. The dictionary definition appears directly in Spotlight search results. Press `Enter` to open it in full view.
+
+### 3. Dedicated Dictionary App (`Dictionary.app`)
+Open macOS built-in **Dictionary.app** to browse, search, and bookmark entries like a traditional encyclopedic book.
 
 ---
 
@@ -16,16 +47,16 @@ Part of the **Mongolian Language for All** open-source initiative by [Tsengel](h
 | :--- | :--- | :---: | :---: | :--- |
 | **English-Mongolian Dictionary** | Dr. Altangerel Damdinsuren | **25,252** | Bilingual (EN &rarr; MN) | `org.tsengel.dictionary.Altangerel-English-Mongolian` |
 | **Mongolian Explanatory Dictionary** | Academician Ya. Tsevel | **30,626** | Monolingual (MN &rarr; MN) | `org.tsengel.dictionary.Tsevel-Mongolian-Explanatory` |
-| **Total Headwords & Definitions** | | **55,878** | | |
+| **Dual Script & Galig** | Traditional Script (`ᠮᠣᠩᠭᠣᠯ`) & Classical Latin | Multi-script | Cyrillic + Hudum Bichig | Embedded in Header |
+| **Total Headwords & Definitions** | | **55,878+** | | |
 
 ---
 
 ## Features
 
-- **Native macOS Deep Integration**:
-  - **Three-Finger Tap / Force Click**: Highlight any word in Safari, PDF reader, or Notes to get instant definitions in a popover window.
-  - **Spotlight Search**: Press `Cmd + Space` and search Mongolian or English words directly from the macOS desktop without opening any app.
-  - **Look Up (`Cmd + Ctrl + D`)**: Global keyboard shortcut lookup across macOS.
+- **Dual-Script Presentation (Cyrillic + Traditional Mongolian Script)**:
+  - Headwords feature vertical Traditional Script (`ᠮᠣᠷᠢ`) alongside standard Cyrillic (`морь`) and Classical Latin transliteration (*mori*).
+  - Searchable in both Cyrillic and Traditional Mongolian script.
 - **Modern San Francisco Typography & Styling**:
   - Customized CSS optimized for Apple Retina displays and macOS San Francisco / PingHei typography.
   - Grammatical part-of-speech badges (`n.`, `v.`, `adj.`, `suff.`).
@@ -69,6 +100,7 @@ Download the precompiled `.dictionary.zip` packages from the latest [GitHub Rele
 
 ### Prerequisites
 - Python 3.10+
+- Node.js 18+ (for script enrichment)
 - `pip install pyglossary lxml beautifulsoup4`
 - macOS with Xcode Command Line Tools and Apple Dictionary Development Kit (DDK).
 
@@ -84,7 +116,7 @@ Download the precompiled `.dictionary.zip` packages from the latest [GitHub Rele
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
-   pip install pyglossary lxml beautifulsoup4
+   pip install -r requirements.txt
    python3 src/build_dictionary.py --dict all
    ```
    This generates the Apple DDK input sources in:
@@ -105,33 +137,12 @@ Download the precompiled `.dictionary.zip` packages from the latest [GitHub Rele
 
 ---
 
-## Repository Structure
-
-```
-apple-dictionary-mongolian/
-├── .github/
-│   └── workflows/
-│       └── build-dictionary.yml    # GitHub Actions automated CI/CD for macOS
-├── data/
-│   ├── altangerel/                 # Dr. Altangerel StarDict source dataset
-│   └── tsevel/                     # Ya. Tsevel explanatory dataset
-├── src/
-│   └── build_dictionary.py         # Converter & XML validator
-├── styles/
-│   └── Dictionary.css              # Apple Dictionary Retina & Dark Mode styling
-├── build/                          # Generated DDK packages
-├── LICENSE                         # GNU General Public License v3.0
-└── README.md                       # Documentation
-```
-
----
-
 ## Credits & Acknowledgements
 
 - **Dr. Altangerel Damdinsuren**: Author of the English-Mongolian Dictionary, open-sourced for the Mongolian people.
 - **Academician Ya. Tsevel**: Author of the foundational "Монгол хэлний товч тайлбар толь" (1966, Institute of Language and Literature, Mongolian Academy of Sciences).
 - **Ochirkhuyag.L ([@ochko](https://github.com/ochko))**: Digitization and StarDict conversion work.
-- **Tsengel ([tsengel.de](https://tsengel.de))**: System integration, Apple DDK packaging, dark mode styling, and ongoing maintenance.
+- **Tsengel ([tsengel.de](https://tsengel.de))**: System architecture, Apple DDK packaging, dark mode styling, and ongoing maintenance.
 
 ---
 

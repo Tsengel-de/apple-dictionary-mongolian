@@ -121,6 +121,15 @@ def build_tsevel():
             
     print(f"[+] Loaded {len(entries):,} Tsevel entries.")
     
+    # Load traditional Mongolian script mapping if available
+    bichig_mapping = {}
+    bichig_json_path = DATA_DIR / "bichig_mapping.json"
+    if bichig_json_path.exists():
+        import json
+        with open(bichig_json_path, "r", encoding="utf-8") as f:
+            bichig_mapping = json.load(f)
+        print(f"[+] Loaded {len(bichig_mapping):,} Traditional Mongolian script mappings.")
+
     xml_filename = f"{dict_name}.xml"
     xml_path = out_dir / xml_filename
     print(f"[*] Writing Apple Dictionary XML: {xml_path}...")
@@ -150,6 +159,15 @@ def build_tsevel():
                 p_clean = re.sub(r'\s+(?:[iIvVxX]+|\d+)$', '', part.strip()).strip()
                 if p_clean:
                     indices.add(p_clean)
+
+            # Check for Traditional Mongolian script
+            bichig_data = bichig_mapping.get(base_word) or bichig_mapping.get(word)
+            if not bichig_data and ',' in word:
+                first_part = word.split(',')[0].strip()
+                bichig_data = bichig_mapping.get(first_part)
+                
+            if bichig_data and bichig_data.get('s'):
+                indices.add(bichig_data['s'])
                     
             # Clean and validate definition XHTML with lxml
             try:
@@ -172,7 +190,20 @@ def build_tsevel():
                 val_esc = html.escape(idx_val, quote=True)
                 out.write(f'  <d:index d:value="{val_esc}" d:title="{title_esc}"/>\n')
                 
-            out.write(f'  <h1>{html.escape(word)}</h1>\n')
+            # Header with vertical Traditional Script Ribbon if available
+            if bichig_data and bichig_data.get('s'):
+                bichig_script = html.escape(bichig_data['s'])
+                galig = html.escape(bichig_data.get('g', ''))
+                galig_span = f' <span class="galig">({galig})</span>' if galig else ''
+                out.write('  <div class="entry-header">\n')
+                out.write(f'    <div class="bichig-column">{bichig_script}</div>\n')
+                out.write('    <div class="header-content">\n')
+                out.write(f'      <h1>{html.escape(word)}{galig_span}</h1>\n')
+                out.write('    </div>\n')
+                out.write('  </div>\n')
+            else:
+                out.write(f'  <h1>{html.escape(word)}</h1>\n')
+                
             out.write(f'  {clean_def}\n')
             out.write('  <div class="source-badge">Я. Цэвэл — Монгол хэлний тайлбар толь</div>\n')
             out.write('</d:entry>\n')
