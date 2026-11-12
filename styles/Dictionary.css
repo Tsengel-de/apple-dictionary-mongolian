@@ -6,36 +6,13 @@
    Part of the "Mongolian Language for All" initiative (tsengel.de)
 */
 
-:root {
-    --bg-color: #ffffff;
-    --text-color: #1d1d1f;
-    --text-secondary: #6e6e73;
-    --accent-color: #0071e3;
-    --badge-bg: #f2f5fb;
-    --badge-text: #1967d2;
-    --bichig-border: #d0e1fd;
-    --example-color: #48484a;
-    --border-color: #e5e5ea;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: #1c1c1e;
-        --text-color: #f5f5f7;
-        --text-secondary: #98989d;
-        --accent-color: #2997ff;
-        --badge-bg: #1a2a44;
-        --badge-text: #8ab4f8;
-        --bichig-border: #2c4266;
-        --example-color: #aeaeb2;
-        --border-color: #38383a;
-    }
-}
-
+/* --------------------------------------------------------------------------
+   Light Mode (Default)
+   -------------------------------------------------------------------------- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
                  "PingFang SC", "Mongolian Baiti", "Menk Garqag Tig", sans-serif;
-    color: var(--text-color);
+    color: #1d1d1f;
     background-color: transparent;
     line-height: 1.55;
     font-size: 14px;
@@ -47,7 +24,7 @@ body {
 d|entry {
     margin-bottom: 1.4em;
     padding-bottom: 0.8em;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #e5e5ea;
 }
 
 /* Dual-Script Header Layout (Traditional Vertical Ribbon + Cyrillic Title) */
@@ -65,9 +42,9 @@ d|entry {
     font-family: "Mongolian Baiti", "Menk Garqag Tig", "Mongolian White", sans-serif;
     font-size: 1.4em;
     line-height: 1.15;
-    color: var(--accent-color);
-    background-color: var(--badge-bg);
-    border: 1px solid var(--bichig-border);
+    color: #0071e3;
+    background-color: #f2f5fb;
+    border: 1px solid #d0e1fd;
     border-radius: 6px;
     padding: 8px 6px;
     min-height: 48px;
@@ -88,7 +65,7 @@ h1 {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
     font-size: 1.45em;
     font-weight: 600;
-    color: var(--text-color);
+    color: #1d1d1f;
     letter-spacing: -0.015em;
     margin: 0 0 4px 0;
     padding: 0;
@@ -99,7 +76,7 @@ h1 {
     font-size: 0.68em;
     font-weight: normal;
     font-style: italic;
-    color: var(--text-secondary);
+    color: #6e6e73;
     margin-left: 6px;
 }
 
@@ -115,8 +92,8 @@ h1 {
 .bichig-tag {
     display: inline-flex;
     align-items: center;
-    background-color: var(--badge-bg);
-    border: 1px solid var(--bichig-border);
+    background-color: #f2f5fb;
+    border: 1px solid #d0e1fd;
     border-radius: 6px;
     padding: 2px 8px;
     font-size: 0.9em;
@@ -126,12 +103,12 @@ h1 {
 .bichig-glyph {
     font-family: "Mongolian Baiti", "Menk Garqag Tig", "Mongolian White", sans-serif;
     font-size: 1.25em;
-    color: var(--accent-color);
+    color: #0071e3;
     margin-right: 6px;
 }
 
 .bichig-label {
-    color: var(--text-color);
+    color: #1d1d1f;
     font-size: 0.85em;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 }
@@ -144,8 +121,8 @@ font[color="blue"] {
     font-size: 0.82em;
     font-weight: 600;
     font-style: normal;
-    background-color: var(--badge-bg);
-    color: var(--badge-text) !important;
+    background-color: #f2f5fb;
+    color: #1967d2 !important;
     padding: 1px 6px;
     border-radius: 4px;
     margin-right: 5px;
@@ -161,34 +138,117 @@ ol, ul {
 
 li {
     margin-bottom: 4px;
+    color: inherit;
 }
 
 p {
     margin: 4px 0 8px 0;
+    color: inherit;
 }
 
 /* Examples, proverbs, idioms */
 i, em, .ex {
-    color: var(--example-color);
+    color: #48484a;
     font-style: italic;
 }
 
+b, strong {
+    font-weight: 600;
+    color: #1d1d1f;
+}
+
 .pronunciation, .pr {
-    color: var(--text-secondary);
+    color: #6e6e73;
     font-family: "Lucida Grande", "SF Pro Text", sans-serif;
     font-size: 0.9em;
     margin-left: 4px;
 }
 
-.tsevel-body, .altangerel-body {
+.tsevel-body, .altangerel-body, .definition {
     font-size: 0.98em;
     line-height: 1.6;
+    color: #1d1d1f;
 }
 
 .source-badge {
     display: inline-block;
     margin-top: 8px;
     font-size: 0.72em;
-    color: var(--text-secondary);
-    opacity: 0.75;
+    color: #6e6e73;
+    opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   Dark Mode — High Contrast & Apple Retina Optimizations
+   Explicit rules to guarantee crisp legibility in macOS Dictionary & Safari
+   -------------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #f5f5f7 !important;
+    }
+
+    d|entry {
+        border-bottom-color: #38383a !important;
+    }
+
+    h1 {
+        color: #ffffff !important;
+    }
+
+    .galig {
+        color: #a1a1a6 !important;
+    }
+
+    .definition,
+    .tsevel-body,
+    .altangerel-body,
+    p,
+    li,
+    ol,
+    ul,
+    div {
+        color: #f5f5f7 !important;
+    }
+
+    b, strong {
+        color: #ffffff !important;
+    }
+
+    i, em, .ex {
+        color: #d1d1d6 !important;
+    }
+
+    .bichig-column {
+        color: #64b5f6 !important;
+        background-color: #242c38 !important;
+        border-color: #3b506d !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    .altangerel-bichig-bar .bichig-tag {
+        background-color: #242c38 !important;
+        border-color: #3b506d !important;
+    }
+
+    .bichig-glyph {
+        color: #64b5f6 !important;
+    }
+
+    .bichig-label {
+        color: #e5e5ea !important;
+    }
+
+    .pos,
+    font[color="blue"] {
+        background-color: #1c2b42 !important;
+        color: #90caf9 !important;
+    }
+
+    .pronunciation, .pr {
+        color: #a1a1a6 !important;
+    }
+
+    .source-badge {
+        color: #8e8e93 !important;
+    }
 }

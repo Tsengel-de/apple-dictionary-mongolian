@@ -98,6 +98,30 @@ Open macOS built-in **Dictionary.app** to browse, search, and bookmark entries l
 
 ---
 
+## How to Use Everywhere on macOS
+
+Once enabled, your Mongolian dictionaries work system-wide across all Mac applications (Safari, Pages, Notes, Mail, Books, Terminal, TextEdit):
+
+### 1. Instant Look Up via Right-Click (Recommended)
+1. Select or hover over any word in Safari or any app.
+2. **Right-click** and select **Look Up "..."**.
+3. A popup window appears instantly! At the bottom of the popup, click on **English-Mongolian (Altangerel)** or **Цэвэл** to view the dual-script definitions.
+
+### 2. Global Keyboard Shortcut
+- Place your cursor over any word and press:
+  ```text
+  Ctrl + Cmd + D
+  ```
+  The native Apple Dictionary popup will open immediately.
+
+### 3. Trackpad Look Up (Optional)
+- Hover over any word and **Tap with 3 fingers** (or **Force Click with 1 finger** if configured in *System Settings $\rightarrow$ Trackpad $\rightarrow$ Point & Click $\rightarrow$ Look up & data detectors*).
+
+### 4. macOS Spotlight Integration
+- Press `Cmd + Space` (Spotlight), type any English, Cyrillic, or Traditional Mongolian word (e.g., `морь` or `ᠬᠦᠰᠡᠯ`), and preview definitions directly in Spotlight without opening any app.
+
+---
+
 ## Building from Source
 
 ### Prerequisites

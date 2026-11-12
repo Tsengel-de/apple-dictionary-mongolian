@@ -27,8 +27,8 @@ Mongolian Dictionaries for macOS
 Dual-Script Suite: Altangerel (EN-MN) & Tsevel (MN-MN)
 Part of the "Mongolian Language for All" initiative (https://tsengel.de)
 
-INSTALLATION INSTRUCTIONS:
--------------------------
+EASY INSTALLATION:
+------------------
 1. Ensure the Dictionaries folder exists on your Mac:
    Open Terminal and run:
      mkdir -p ~/Library/Dictionaries
@@ -45,6 +45,12 @@ INSTALLATION INSTRUCTIONS:
        * English-Mongolian Dictionary (Altangerel)
        * Монгол хэлний тайлбар толь (Цэвэл)
    - Drag to arrange your preferred search priority.
+
+HOW TO USE SYSTEM-WIDE:
+-----------------------
+- Right-Click on any word in Safari/Notes/Mail -> Select Look Up "..."
+- Or place cursor over any word and press: Ctrl + Cmd + D
+- Or search in Spotlight (Cmd + Space) directly!
 
 Enjoy! 🇲🇳
 EOF
