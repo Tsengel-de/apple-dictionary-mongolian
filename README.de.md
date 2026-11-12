@@ -4,6 +4,7 @@
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPLv3--or--later-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-macOS-lightgrey.svg)](https://apple.com)
 [![Initiative](https://img.shields.io/badge/Initiative-Mongolian%20Language%20for%20All-brightgreen.svg)](https://tsengel.de)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/tsengel)
 [![Author: Tsengel](https://img.shields.io/badge/Author-Tsengel%20(tsengel.de)-red.svg)](https://tsengel.de)
 
 **Sprachen / Languages / Хэл сонгох:** [🇲🇳 Монгол](README.md) • [🇬🇧 English](README.en.md) • [🇩🇪 Deutsch](README.de.md)
@@ -14,7 +15,7 @@ Teil der Open-Source-Initiative **„Mongolische Sprache für alle“** von [Tse
 
 ---
 
-## 🔍 Wörterbuch vs. Maschinelle Übersetzung
+## Wörterbuch vs. Maschinelle Übersetzung
 
 Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Übersetzungsprogramm** (wie Google Translate / DeepL):
 
@@ -27,7 +28,7 @@ Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Überset
 
 ---
 
-## 📚 Enthaltene Wörterbücher
+## Enthaltene Wörterbücher
 
 | Wörterbuch | Autor / Quelle | Einträge | Typ | Bundle-ID |
 | :--- | :--- | :---: | :---: | :--- |
@@ -38,7 +39,7 @@ Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Überset
 
 ---
 
-## ✨ Hauptmerkmale
+## Hauptmerkmale
 
 - **Dual-Script-Darstellung (Kyrillisch + Klassische Mongolische Schrift)**:
   - Jeder Eintrag zeigt die klassische vertikale mongolische Schrift (`ᠮᠣᠷᠢ`) neben dem Standardkyrillischen (`морь`) und der wissenschaftlichen lateinischen Transliteration (*mori*).
@@ -54,7 +55,7 @@ Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Überset
 
 ---
 
-## 🚀 Schnelle Installation
+## Schnelle Installation
 
 ### Methode 1: Natives DMG-Image (Empfohlen — Drag & Drop)
 1. Laden Sie **`Mongolian-Dictionaries-macOS.dmg`** aus den [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases) herunter und öffnen Sie es per Doppelklick.
@@ -84,7 +85,7 @@ Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Überset
 
 ---
 
-## 🎯 Verwendung unter macOS
+## Verwendung unter macOS
 
 Sobald aktiviert, stehen Ihnen die Wörterbücher systemweit in allen Mac-Apps zur Verfügung (Safari, Pages, Notizen, Mail, Vorschau, Terminal, TextEdit):
 
@@ -108,7 +109,7 @@ Sobald aktiviert, stehen Ihnen die Wörterbücher systemweit in allen Mac-Apps z
 
 ---
 
-## 🛠️ Aus dem Quellcode erstellen (Building from Source)
+## Aus dem Quellcode erstellen (Building from Source)
 
 ### Voraussetzungen:
 - Python 3.10+
@@ -133,7 +134,15 @@ bash scripts/build_dmg.sh
 
 ---
 
-## 📜 Lizenz & Danksagung
+## Unterstützung (Support & Spenden)
+
+Wenn dieses Projekt für Sie nützlich ist, können Sie die Weiterentwicklung und Infrastruktur gerne unterstützen:
+
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Unterstützen-ff5e5b?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/tsengel)
+
+---
+
+## Lizenz & Danksagung
 
 - **Quellwörterbücher**:
   - *Englisch-Mongolisches Wörterbuch* von Dr. Ch. Altangerel Damdinsuren.
@@ -142,3 +151,4 @@ bash scripts/build_dmg.sh
 - **Software & Styles**: Lizenziert unter der [GNU General Public License v3.0 (GPLv3)](LICENSE). Dual-Licensing-Vorbehalt durch Tsengel (tsengel@tsengel.de | [tsengel.de](https://tsengel.de)).
 
 *Möge die mongolische Sprache und Schrift im digitalen Zeitalter weiter erblühen! 🇲🇳*
+

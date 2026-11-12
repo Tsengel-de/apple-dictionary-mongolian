@@ -3,6 +3,7 @@
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPLv3--or--later-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-macOS-lightgrey.svg)](https://apple.com)
 [![Initiative](https://img.shields.io/badge/Initiative-Mongolian%20Language%20for%20All-brightgreen.svg)](https://tsengel.de)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/tsengel)
 [![Author: Tsengel](https://img.shields.io/badge/Author-Tsengel%20(tsengel.de)-red.svg)](https://tsengel.de)
 
 **Languages / Хэл сонгох / Sprachen:** [🇲🇳 Монгол](README.md) • [🇬🇧 English](README.en.md) • [🇩🇪 Deutsch](README.de.md)
@@ -140,6 +141,14 @@ Once enabled, your Mongolian dictionaries work system-wide across all Mac applic
 
 ---
 
+## Support & Donation
+
+If you find this project helpful, you can support its ongoing maintenance and infrastructure:
+
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/tsengel)
+
+---
+
 ## License & Attribution
 
 - **Source Dictionaries**:
@@ -147,3 +156,4 @@ Once enabled, your Mongolian dictionaries work system-wide across all Mac applic
   - *Mongolian Explanatory Dictionary* by Academician Ya. Tsevel.
 - **Traditional Script Mapping Engine**: Powered by `@gege-mn/gege-converter`.
 - **Software & Styles**: Licensed under the [GNU General Public License v3.0 (GPLv3)](LICENSE). Dual-licensing reservation by Tsengel (tsengel@tsengel.de | [tsengel.de](https://tsengel.de)).
+

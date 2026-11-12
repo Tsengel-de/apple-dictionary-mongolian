@@ -4,6 +4,7 @@
 [![License: GPL-3.0-or-later](https://img.shields.io/badge/License-GPLv3--or--later-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-macOS-lightgrey.svg)](https://apple.com)
 [![Initiative](https://img.shields.io/badge/Initiative-Mongolian%20Language%20for%20All-brightgreen.svg)](https://tsengel.de)
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi&logoColor=white)](https://ko-fi.com/tsengel)
 [![Author: Tsengel](https://img.shields.io/badge/Author-Tsengel%20(tsengel.de)-red.svg)](https://tsengel.de)
 
 **Хэл сонгох / Languages / Sprachen:** [🇲🇳 Монгол](README.md) • [🇬🇧 English](README.en.md) • [🇩🇪 Deutsch](README.de.md)
@@ -15,7 +16,7 @@
 
 ---
 
-## 🔍 Толь Бичиг гэж юу вэ? (Толь Бичиг vs. Орчуулагч)
+## Толь Бичиг гэж юу вэ? (Толь Бичиг vs. Орчуулагч)
 
 Олон хэрэглэгчид **Толь бичиг (Dictionary)** болон **Машин орчуулагч (Google Translate / DeepL)** хоёрыг андуурдаг:
 
@@ -28,7 +29,7 @@
 
 ---
 
-## 📚 Багтсан Толь Бичгүүд
+## Багтсан Толь Бичгүүд
 
 | Толь бичиг | Зохиогч / Эх сурвалж | Үгийн тоо | Төрөл | Багцын ID |
 | :--- | :--- | :---: | :---: | :--- |
@@ -39,7 +40,7 @@
 
 ---
 
-## ✨ Онцлог Давуу Талууд
+## Онцлог Давуу Талууд
 
 - **Хос Бичгийн Хослол (Кирилл + Худам Монгол Бичиг)**:
   - Толгой үг бүр босоо Худам монгол бичиг (`ᠮᠣᠷᠢ`), стандарт кирилл бичиг (`морь`) болон сонгодог латин галигтайгаа (*mori*) зэрэгцэн харагдана.
@@ -55,7 +56,7 @@
 
 ---
 
-## 🚀 Хялбар Суулгах Заавар
+## Хялбар Суулгах Заавар
 
 ### Арга 1: Apple Native `.dmg` Дискээр Суулгах (Зөвлөмж — Drag & Drop)
 1. Хамгийн сүүлийн [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases)-ээс **`Mongolian-Dictionaries-macOS.dmg`** файлыг татаж аваад 2 товшиж нээнэ.
@@ -84,7 +85,7 @@
 
 ---
 
-## 🎯 macOS Дээр Хэрхэн Хялбар Ашиглах вэ?
+## macOS Дээр Хэрхэн Хялбар Ашиглах вэ?
 
 Идэвхжүүлсний дараа таны Mac-ийн бүх програм дээр шууд ажиллана:
 
@@ -108,7 +109,7 @@
 
 ---
 
-## 🛠️ Эх Кодоос Угсрах (Building from Source)
+## Эх Кодоос Угсрах (Building from Source)
 
 ### Шаардлагатай багажууд:
 - Python 3.10+
@@ -136,7 +137,15 @@ bash scripts/build_dmg.sh
 
 ---
 
-## 📜 Зохиогчийн Эрх ба Талархал
+## Төслийг Дэмжих (Support & Donation)
+
+Хэрэв энэхүү толь бичиг танд тус болж байгаа бол төслийн хөгжүүлэлт болон дэд бүтцийн зардлыг дэмжих боломжтой:
+
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Дэмжих-ff5e5b?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/tsengel)
+
+---
+
+## Зохиогчийн Эрх ба Талархал
 
 - **Эх Толь Бичгүүд**:
   - *Англи-Монгол Толь Бичиг* — Доктор Ч. Алтангэрэл Дамдинсүрэн.
