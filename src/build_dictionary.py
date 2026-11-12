@@ -190,7 +190,7 @@ def build_tsevel():
             display_name="Монгол хэлний тайлбар толь (Цэвэл)",
             bundle_name=dict_name,
             version="1.0.0",
-            copyright="Cultural Heritage / Public Domain (1966). Digitized & Packaged for Apple macOS by Tsengel (tsengel.de)",
+            copyright="Cultural Heritage / Public Domain (1966). Digitized and Packaged for Apple macOS by Tsengel (tsengel.de)",
             author="Ya. Tsevel / Tsengel (tsengel.de)",
             index_lang="mn",
             target_lang="mn"
