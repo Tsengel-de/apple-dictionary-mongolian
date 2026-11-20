@@ -8,6 +8,14 @@
 
 **Languages / Хэл сонгох / Sprachen:** [🇲🇳 Монгол](README.md) • [🇬🇧 English](README.en.md) • [🇩🇪 Deutsch](README.de.md)
 
+> [!IMPORTANT]
+> 🌿 **Non-Commercial • Public Commons**  
+> **Voluntarily created for the public good.**  
+> **Freely open to everyone** — Nobody profits from this work, and nobody is ever charged. Created purely during personal free time as an open-source public good to empower Mongolian language digital tools worldwide.
+
+> **"Exploring the richness of the Mongolian language should never be complicated or out of reach."**  
+> A unified, high-speed, offline native macOS dictionary suite designed for Mongolians worldwide, diaspora communities, developers, translators, and language learners to look up Cyrillic, Classical script, and English meanings instantly across all Mac applications.
+
 Native Apple Dictionary bundles (`.dictionary`) designed for macOS, providing instant offline lookups across all Apple applications (Safari, Pages, Mail, Preview, Terminal, Notes, and Spotlight). Featuring full **Traditional Mongolian Script (ᠮᠣᠩᠭᠣᠯ ᠪᠢᠴᠢᠭ)** and **Classical Latin Galig**.
 
 Part of the **"Mongolian Language for All"** open-source initiative by [Tsengel](https://tsengel.de).

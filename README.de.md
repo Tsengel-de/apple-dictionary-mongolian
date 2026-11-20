@@ -9,6 +9,14 @@
 
 **Sprachen / Languages / Хэл сонгох:** [🇲🇳 Монгол](README.md) • [🇬🇧 English](README.en.md) • [🇩🇪 Deutsch](README.de.md)
 
+> [!IMPORTANT]
+> 🌿 **Nicht-kommerziell • Gemeingut**  
+> **Ehrenamtlich für das Gemeinwohl geschaffen.**  
+> **Für jeden frei zugänglich** — Niemand verdient hiermit Geld und es fallen keinerlei Gebühren an. Rein in persönlicher Freizeit als freies Open-Source-Gemeingut zur Förderung der mongolischen Sprache weltweit entwickelt.
+
+> **„Der Zugang zum Reichtum der mongolischen Sprache sollte niemals mühsam oder unzugänglich sein.“**  
+> Eine native, blitzschnelle Offline-Wörterbuchsuite für macOS – geschaffen für Mongolinnen und Mongolen weltweit, Diaspora-Gemeinschaften, Entwickler, Übersetzer und Sprachbegeisterte, um kyrillische, klassisch-mongolische und englische Begriffe in allen Mac-Apps nahtlos nachzuschlagen.
+
 Native Apple Dictionary-Pakete (`.dictionary`) für macOS für blitzschnelle Offline-Wortsuche in allen Apple-Programmen (Safari, Pages, Mail, Vorschau, Terminal, Notizen und Spotlight). Mit vollständiger Unterstützung der **klassischen mongolischen Schrift (ᠮᠣᠩᠭᠣᠯ ᠪᠢᠴᠢᠭ - Hudum)** und **lateinischer Transliteration (Galig)**.
 
 Teil der Open-Source-Initiative **„Mongolische Sprache für alle“** von [Tsengel](https://tsengel.de).
