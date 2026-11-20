@@ -19,12 +19,6 @@ echo "[*] Staging dictionary bundles..."
 cp -R "${REPO_ROOT}/build/Mongolian-English-Altangerel/objects/Mongolian-English-Altangerel.dictionary" "${DMG_STAGE}/"
 cp -R "${REPO_ROOT}/build/Mongolian-Tsevel-Explanatory/objects/Mongolian-Tsevel-Explanatory.dictionary" "${DMG_STAGE}/"
 
-# Build 1-click Native Installer Applet if running on macOS (with osacompile)
-if command -v osacompile &>/dev/null; then
-    echo "[*] Compiling 1-click Dictionary Installer.app..."
-    osacompile -o "${DMG_STAGE}/Install Dictionaries.app" "${SCRIPT_DIR}/install.applescript"
-fi
-
 echo "[*] Adding README.txt..."
 cat << 'EOF' > "${DMG_STAGE}/README.txt"
 Mongolian Dictionaries for macOS
@@ -32,13 +26,8 @@ Mongolian Dictionaries for macOS
 Dual-Script Suite: Altangerel (EN-MN) & Tsevel (MN-MN)
 Part of the "Mongolian Language for All" initiative (https://tsengel.de)
 
-METHOD 1: ONE-CLICK AUTOMATED INSTALLATION (RECOMMENDED)
---------------------------------------------------------
-Double-click "Install Dictionaries.app" to automatically install both dictionaries
-into your ~/Library/Dictionaries folder without terminal or root privileges.
-
-METHOD 2: MANUAL INSTALLATION
------------------------------
+EASY INSTALLATION:
+------------------
 1. Open Finder, press:
      Cmd + Shift + G
    Type:

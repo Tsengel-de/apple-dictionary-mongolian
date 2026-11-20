@@ -63,10 +63,9 @@
 
 ## Хялбар Суулгах Заавар
 
-### Арга 1: Apple Native `.dmg` Дискээр Суулгах (Зөвлөмж — 1-Click эсвэл Drag & Drop)
+### Арга 1: Apple Native `.dmg` Дискээр Суулгах (Зөвлөмж — Drag & Drop)
 1. Хамгийн сүүлийн [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases)-ээс **`Mongolian-Dictionaries-macOS.dmg`** файлыг татаж аваад 2 товшиж нээнэ.
-2. DMG доторх **`Install Dictionaries.app`** дээр 2 товшиход толь бичгүүд автоматаар таны `~/Library/Dictionaries/` хавтсанд шууд сууна (Терминал болон админ нууц үг шаардахгүй).
-   *(Эсвэл гараар хоёр `.dictionary` багцыг өөрийн `~/Library/Dictionaries/` хавтас руу чирч тавьж болно)*.
+2. Finder дээр **`Cmd + Shift + G`** дараад `~/Library/Dictionaries` гэж орон (хавтас байхгүй бол Terminal дээр `mkdir -p ~/Library/Dictionaries`), DMG доторх хоёр `.dictionary` багцыг чирж хуулна.
 
 ### Арга 2: Бие Даасан `.zip` Архиваар Суулгах
 1. `Mongolian-English-Altangerel.dictionary.zip` болон `Mongolian-Tsevel-Explanatory.dictionary.zip` файлуудыг татаж авна.

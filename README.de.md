@@ -65,10 +65,9 @@ Viele Benutzer verwechseln ein systemweites **Wörterbuch** mit einem **Überset
 
 ## Schnelle Installation
 
-### Methode 1: Natives DMG-Image (Empfohlen — 1-Klick oder Drag & Drop)
+### Methode 1: Natives DMG-Image (Empfohlen — Drag & Drop)
 1. Laden Sie **`Mongolian-Dictionaries-macOS.dmg`** aus den [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases) herunter und öffnen Sie es per Doppelklick.
-2. Doppelklicken Sie auf **`Install Dictionaries.app`** im DMG, um beide Wörterbücher automatisch in Ihren Ordner `~/Library/Dictionaries/` zu installieren (kein Terminal und keine Root-Rechte erforderlich).
-   *(Alternativ können Sie beide `.dictionary`-Pakete per Drag & Drop in Ihren Ordner `~/Library/Dictionaries/` ziehen)*.
+2. Drücken Sie im Finder **`Cmd + Shift + G`**, geben Sie `~/Library/Dictionaries` ein und ziehen Sie beide `.dictionary`-Pakete per Drag & Drop in Ihren Ordner **`~/Library/Dictionaries/`**.
 
 ### Methode 2: ZIP-Archive
 1. Laden Sie `Mongolian-English-Altangerel.dictionary.zip` und `Mongolian-Tsevel-Explanatory.dictionary.zip` herunter.
