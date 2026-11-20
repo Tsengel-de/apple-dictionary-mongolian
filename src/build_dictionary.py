@@ -330,14 +330,6 @@ def build_altangerel():
                 if len(tags) >= 3:
                     break
                     
-        # Bidirectional indexes
-        extra_indexes = []
-        for (cw, s, _) in tags:
-            extra_indexes.append(f'  <d:index d:value="{html.escape(cw, quote=True)}" d:title="{html.escape(title, quote=True)}"/>')
-            extra_indexes.append(f'  <d:index d:value="{html.escape(s, quote=True)}" d:title="{html.escape(title, quote=True)}"/>')
-            
-        extra_idx_str = ('\n' + '\n'.join(extra_indexes)) if extra_indexes else ''
-        
         # Traditional script badges
         bichig_bar = ''
         if tags:
@@ -359,7 +351,7 @@ def build_altangerel():
         
         return (
             f'<d:entry {attrs}>\n'
-            f'{pre_h1.strip()}{extra_idx_str}\n'
+            f'{pre_h1.strip()}\n'
             f'  {h1_tag}{bichig_bar}\n'
             f'  <div class="definition altangerel-body">\n    {formatted_def.strip()}\n  </div>\n'
             f'  <div class="source-badge">Altangerel Damdinsuren — English-Mongolian Dictionary</div>\n'

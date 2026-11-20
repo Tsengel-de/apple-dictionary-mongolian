@@ -267,6 +267,28 @@ html.apple_client-panel body {
     font-size: 13.5px;
 }
 
+html.apple_client-panel d|entry {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+html.apple_client-panel .entry-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px 0;
+}
+
+html.apple_client-panel .bichig-column {
+    font-size: 1.15em;
+    padding: 4px 6px;
+    min-height: 36px;
+    max-height: 90px;
+}
+
 html.apple_client-panel h1,
 html.apple_client-panel b,
 html.apple_client-panel strong {
