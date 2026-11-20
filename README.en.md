@@ -56,14 +56,10 @@ Many users confuse a **Dictionary** with a **Machine Translator**:
 
 ## Quick Installation
 
-### Method 1: Native Disk Image `.dmg` (Recommended — Drag & Drop)
+### Method 1: Native Disk Image `.dmg` (Recommended — 1-Click or Drag & Drop)
 1. Download **`Mongolian-Dictionaries-macOS.dmg`** from [GitHub Releases](https://github.com/Tsengel-de/apple-dictionary-mongolian/releases) and double-click to mount it.
-2. Ensure the destination folder exists on your Mac. If your Mac does not have a `Dictionaries` folder yet (standard on fresh macOS Sonoma / Sequoia / Apple Silicon), run this once in Terminal:
-   ```bash
-   mkdir -p ~/Library/Dictionaries
-   ```
-   *(Or in Finder: press `Cmd + Shift + G`, enter `~/Library`, and create a new folder named `Dictionaries`)*.
-3. Drag both `.dictionary` bundles into your `~/Library/Dictionaries/` folder.
+2. Double-click **`Install Dictionaries.app`** inside the DMG to automatically install both dictionaries into your `~/Library/Dictionaries/` folder without needing Terminal or admin rights.
+   *(Or manually drag both `.dictionary` bundles into your `~/Library/Dictionaries/` folder)*.
 
 ### Method 2: Standalone `.zip` Archives
 1. Download `Mongolian-English-Altangerel.dictionary.zip` and `Mongolian-Tsevel-Explanatory.dictionary.zip`.

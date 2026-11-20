@@ -7,12 +7,14 @@
 */
 
 /* --------------------------------------------------------------------------
-   Light Mode (Default)
+   Light Mode (Default & Dynamic System Color Base)
+   Using Apple WebKit semantic colors (-apple-system-label) so text natively
+   adapts across Dictionary.app, Quick Look, and Look Up popup panels.
    -------------------------------------------------------------------------- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
                  "PingFang SC", "Mongolian Baiti", "Menk Garqag Tig", sans-serif;
-    color: #1d1d1f;
+    color: -apple-system-label, #1d1d1f;
     background-color: transparent;
     line-height: 1.55;
     font-size: 14px;
@@ -65,7 +67,7 @@ h1 {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
     font-size: 1.45em;
     font-weight: 600;
-    color: #1d1d1f;
+    color: -apple-system-label, #1d1d1f;
     letter-spacing: -0.015em;
     margin: 0 0 4px 0;
     padding: 0;
@@ -76,7 +78,7 @@ h1 {
     font-size: 0.68em;
     font-weight: normal;
     font-style: italic;
-    color: #6e6e73;
+    color: -apple-system-secondary-label, #6e6e73;
     margin-left: 6px;
 }
 
@@ -108,7 +110,7 @@ h1 {
 }
 
 .bichig-label {
-    color: #1d1d1f;
+    color: -apple-system-label, #1d1d1f;
     font-size: 0.85em;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 }
@@ -148,17 +150,17 @@ p {
 
 /* Examples, proverbs, idioms */
 i, em, .ex {
-    color: #48484a;
+    color: -apple-system-secondary-label, #48484a;
     font-style: italic;
 }
 
 b, strong {
     font-weight: 600;
-    color: #1d1d1f;
+    color: -apple-system-label, #1d1d1f;
 }
 
 .pronunciation, .pr {
-    color: #6e6e73;
+    color: -apple-system-secondary-label, #6e6e73;
     font-family: "Lucida Grande", "SF Pro Text", sans-serif;
     font-size: 0.9em;
     margin-left: 4px;
@@ -167,22 +169,23 @@ b, strong {
 .tsevel-body, .altangerel-body, .definition {
     font-size: 0.98em;
     line-height: 1.6;
-    color: #1d1d1f;
+    color: -apple-system-label, #1d1d1f;
 }
 
 .source-badge {
     display: inline-block;
     margin-top: 8px;
     font-size: 0.72em;
-    color: #6e6e73;
+    color: -apple-system-tertiary-label, #6e6e73;
     opacity: 0.85;
 }
 
 /* --------------------------------------------------------------------------
    Dark Mode — High Contrast & Apple Retina Optimizations
-   Explicit rules to guarantee crisp legibility in macOS Dictionary & Safari
+   Supported across macOS Dictionary.app and Safari via standard web and
+   Apple-specific dark interface media queries.
    -------------------------------------------------------------------------- */
-@media (prefers-color-scheme: dark) {
+@media (prefers-dark-interface), (prefers-color-scheme: dark) {
     body {
         color: #f5f5f7 !important;
     }
@@ -250,5 +253,69 @@ b, strong {
 
     .source-badge {
         color: #8e8e93 !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   macOS Quick Look & Look Up Popup Panel Rules (html.apple_client-panel)
+   macOS Look Up popover uses a translucent vibrancy panel that does not always
+   fire web dark-mode media queries. Using explicit -apple-system-label guarantees
+   instant readability in both Light and Dark macOS Look Up popups.
+   -------------------------------------------------------------------------- */
+html.apple_client-panel body {
+    color: -apple-system-label !important;
+    font-size: 13.5px;
+}
+
+html.apple_client-panel h1,
+html.apple_client-panel b,
+html.apple_client-panel strong {
+    color: -apple-system-label !important;
+}
+
+html.apple_client-panel .definition,
+html.apple_client-panel .tsevel-body,
+html.apple_client-panel .altangerel-body,
+html.apple_client-panel p,
+html.apple_client-panel li,
+html.apple_client-panel ol,
+html.apple_client-panel ul,
+html.apple_client-panel div {
+    color: -apple-system-label !important;
+}
+
+html.apple_client-panel .galig,
+html.apple_client-panel .pronunciation,
+html.apple_client-panel .pr,
+html.apple_client-panel i,
+html.apple_client-panel em,
+html.apple_client-panel .ex {
+    color: -apple-system-secondary-label !important;
+}
+
+html.apple_client-panel .bichig-label {
+    color: -apple-system-label !important;
+}
+
+html.apple_client-panel .source-badge {
+    color: -apple-system-tertiary-label !important;
+}
+
+@media (prefers-dark-interface), (prefers-color-scheme: dark) {
+    html.apple_client-panel .bichig-column {
+        color: #64b5f6 !important;
+        background-color: rgba(36, 44, 56, 0.85) !important;
+        border-color: rgba(59, 80, 109, 0.8) !important;
+    }
+
+    html.apple_client-panel .altangerel-bichig-bar .bichig-tag {
+        background-color: rgba(36, 44, 56, 0.85) !important;
+        border-color: rgba(59, 80, 109, 0.8) !important;
+    }
+
+    html.apple_client-panel .pos,
+    html.apple_client-panel font[color="blue"] {
+        background-color: rgba(28, 43, 66, 0.9) !important;
+        color: #90caf9 !important;
     }
 }
