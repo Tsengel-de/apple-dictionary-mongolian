@@ -6,15 +6,36 @@
    Part of the "Mongolian Language for All" initiative (tsengel.de)
 */
 
-/* --------------------------------------------------------------------------
-   Light Mode (Default & Dynamic System Color Base)
-   Using Apple WebKit semantic colors (-apple-system-label) so text natively
-   adapts across Dictionary.app, Quick Look, and Look Up popup panels.
-   -------------------------------------------------------------------------- */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --accent-color: #0071e3;
+    --badge-bg: #f2f5fb;
+    --badge-text: #1967d2;
+    --bichig-border: #d0e1fd;
+    --example-color: #48484a;
+    --border-color: #e5e5ea;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #1c1c1e;
+        --text-color: #f5f5f7;
+        --text-secondary: #98989d;
+        --accent-color: #2997ff;
+        --badge-bg: #1a2a44;
+        --badge-text: #8ab4f8;
+        --bichig-border: #2c4266;
+        --example-color: #aeaeb2;
+        --border-color: #38383a;
+    }
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
                  "PingFang SC", "Mongolian Baiti", "Menk Garqag Tig", sans-serif;
-    color: -apple-system-label, #1d1d1f;
+    color: var(--text-color);
     background-color: transparent;
     line-height: 1.55;
     font-size: 14px;
@@ -26,7 +47,7 @@ body {
 d|entry {
     margin-bottom: 1.4em;
     padding-bottom: 0.8em;
-    border-bottom: 1px solid #e5e5ea;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* Dual-Script Header Layout (Traditional Vertical Ribbon + Cyrillic Title) */
@@ -44,9 +65,9 @@ d|entry {
     font-family: "Mongolian Baiti", "Menk Garqag Tig", "Mongolian White", sans-serif;
     font-size: 1.4em;
     line-height: 1.15;
-    color: #0071e3;
-    background-color: #f2f5fb;
-    border: 1px solid #d0e1fd;
+    color: var(--accent-color);
+    background-color: var(--badge-bg);
+    border: 1px solid var(--bichig-border);
     border-radius: 6px;
     padding: 8px 6px;
     min-height: 48px;
@@ -67,7 +88,7 @@ h1 {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
     font-size: 1.45em;
     font-weight: 600;
-    color: -apple-system-label, #1d1d1f;
+    color: var(--text-color);
     letter-spacing: -0.015em;
     margin: 0 0 4px 0;
     padding: 0;
@@ -78,7 +99,7 @@ h1 {
     font-size: 0.68em;
     font-weight: normal;
     font-style: italic;
-    color: -apple-system-secondary-label, #6e6e73;
+    color: var(--text-secondary);
     margin-left: 6px;
 }
 
@@ -94,8 +115,8 @@ h1 {
 .bichig-tag {
     display: inline-flex;
     align-items: center;
-    background-color: #f2f5fb;
-    border: 1px solid #d0e1fd;
+    background-color: var(--badge-bg);
+    border: 1px solid var(--bichig-border);
     border-radius: 6px;
     padding: 2px 8px;
     font-size: 0.9em;
@@ -105,12 +126,12 @@ h1 {
 .bichig-glyph {
     font-family: "Mongolian Baiti", "Menk Garqag Tig", "Mongolian White", sans-serif;
     font-size: 1.25em;
-    color: #0071e3;
+    color: var(--accent-color);
     margin-right: 6px;
 }
 
 .bichig-label {
-    color: -apple-system-label, #1d1d1f;
+    color: var(--text-color);
     font-size: 0.85em;
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
 }
@@ -123,8 +144,8 @@ font[color="blue"] {
     font-size: 0.82em;
     font-weight: 600;
     font-style: normal;
-    background-color: #f2f5fb;
-    color: #1967d2 !important;
+    background-color: var(--badge-bg);
+    color: var(--badge-text) !important;
     padding: 1px 6px;
     border-radius: 4px;
     margin-right: 5px;
@@ -140,27 +161,25 @@ ol, ul {
 
 li {
     margin-bottom: 4px;
-    color: inherit;
 }
 
 p {
     margin: 4px 0 8px 0;
-    color: inherit;
 }
 
 /* Examples, proverbs, idioms */
 i, em, .ex {
-    color: -apple-system-secondary-label, #48484a;
+    color: var(--example-color);
     font-style: italic;
 }
 
 b, strong {
     font-weight: 600;
-    color: -apple-system-label, #1d1d1f;
+    color: var(--text-color);
 }
 
 .pronunciation, .pr {
-    color: -apple-system-secondary-label, #6e6e73;
+    color: var(--text-secondary);
     font-family: "Lucida Grande", "SF Pro Text", sans-serif;
     font-size: 0.9em;
     margin-left: 4px;
@@ -169,175 +188,12 @@ b, strong {
 .tsevel-body, .altangerel-body, .definition {
     font-size: 0.98em;
     line-height: 1.6;
-    color: -apple-system-label, #1d1d1f;
 }
 
 .source-badge {
     display: inline-block;
     margin-top: 8px;
     font-size: 0.72em;
-    color: -apple-system-tertiary-label, #6e6e73;
-    opacity: 0.85;
-}
-
-/* --------------------------------------------------------------------------
-   Dark Mode — High Contrast & Apple Retina Optimizations
-   Supported across macOS Dictionary.app and Safari via standard web and
-   Apple-specific dark interface media queries.
-   -------------------------------------------------------------------------- */
-@media (prefers-dark-interface), (prefers-color-scheme: dark) {
-    body {
-        color: #f5f5f7 !important;
-    }
-
-    d|entry {
-        border-bottom-color: #38383a !important;
-    }
-
-    h1 {
-        color: #ffffff !important;
-    }
-
-    .galig {
-        color: #a1a1a6 !important;
-    }
-
-    .definition,
-    .tsevel-body,
-    .altangerel-body,
-    p,
-    li,
-    ol,
-    ul,
-    div {
-        color: #f5f5f7 !important;
-    }
-
-    b, strong {
-        color: #ffffff !important;
-    }
-
-    i, em, .ex {
-        color: #d1d1d6 !important;
-    }
-
-    .bichig-column {
-        color: #64b5f6 !important;
-        background-color: #242c38 !important;
-        border-color: #3b506d !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    .altangerel-bichig-bar .bichig-tag {
-        background-color: #242c38 !important;
-        border-color: #3b506d !important;
-    }
-
-    .bichig-glyph {
-        color: #64b5f6 !important;
-    }
-
-    .bichig-label {
-        color: #e5e5ea !important;
-    }
-
-    .pos,
-    font[color="blue"] {
-        background-color: #1c2b42 !important;
-        color: #90caf9 !important;
-    }
-
-    .pronunciation, .pr {
-        color: #a1a1a6 !important;
-    }
-
-    .source-badge {
-        color: #8e8e93 !important;
-    }
-}
-
-/* --------------------------------------------------------------------------
-   macOS Quick Look & Look Up Popup Panel Rules (html.apple_client-panel)
-   macOS Look Up popover uses a translucent vibrancy panel that does not always
-   fire web dark-mode media queries. Using explicit -apple-system-label guarantees
-   instant readability in both Light and Dark macOS Look Up popups.
-   -------------------------------------------------------------------------- */
-html.apple_client-panel body {
-    color: -apple-system-label !important;
-    font-size: 13.5px;
-}
-
-html.apple_client-panel d|entry {
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border-bottom: none !important;
-}
-
-html.apple_client-panel .entry-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 6px 0;
-}
-
-html.apple_client-panel .bichig-column {
-    font-size: 1.15em;
-    padding: 4px 6px;
-    min-height: 36px;
-    max-height: 90px;
-}
-
-html.apple_client-panel h1,
-html.apple_client-panel b,
-html.apple_client-panel strong {
-    color: -apple-system-label !important;
-}
-
-html.apple_client-panel .definition,
-html.apple_client-panel .tsevel-body,
-html.apple_client-panel .altangerel-body,
-html.apple_client-panel p,
-html.apple_client-panel li,
-html.apple_client-panel ol,
-html.apple_client-panel ul,
-html.apple_client-panel div {
-    color: -apple-system-label !important;
-}
-
-html.apple_client-panel .galig,
-html.apple_client-panel .pronunciation,
-html.apple_client-panel .pr,
-html.apple_client-panel i,
-html.apple_client-panel em,
-html.apple_client-panel .ex {
-    color: -apple-system-secondary-label !important;
-}
-
-html.apple_client-panel .bichig-label {
-    color: -apple-system-label !important;
-}
-
-html.apple_client-panel .source-badge {
-    color: -apple-system-tertiary-label !important;
-}
-
-@media (prefers-dark-interface), (prefers-color-scheme: dark) {
-    html.apple_client-panel .bichig-column {
-        color: #64b5f6 !important;
-        background-color: rgba(36, 44, 56, 0.85) !important;
-        border-color: rgba(59, 80, 109, 0.8) !important;
-    }
-
-    html.apple_client-panel .altangerel-bichig-bar .bichig-tag {
-        background-color: rgba(36, 44, 56, 0.85) !important;
-        border-color: rgba(59, 80, 109, 0.8) !important;
-    }
-
-    html.apple_client-panel .pos,
-    html.apple_client-panel font[color="blue"] {
-        background-color: rgba(28, 43, 66, 0.9) !important;
-        color: #90caf9 !important;
-    }
+    color: var(--text-secondary);
+    opacity: 0.75;
 }
