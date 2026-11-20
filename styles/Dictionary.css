@@ -18,7 +18,7 @@
     --border-color: #e5e5ea;
 }
 
-@media (prefers-dark-interface), (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     :root {
         --bg-color: #1c1c1e;
         --text-color: #f5f5f7;
@@ -29,73 +29,6 @@
         --bichig-border: #2c4266;
         --example-color: #aeaeb2;
         --border-color: #38383a;
-    }
-
-    /* High-contrast dark styling for Look Up popover panel (html.apple_client-panel) */
-    html.apple_client-panel {
-        --bg-color: #1c1c1e;
-        --text-color: #f5f5f7;
-        --text-secondary: #98989d;
-        --accent-color: #2997ff;
-        --badge-bg: #1a2a44;
-        --badge-text: #8ab4f8;
-        --bichig-border: #2c4266;
-        --example-color: #aeaeb2;
-        --border-color: #38383a;
-    }
-
-    html.apple_client-panel body {
-        color: #f5f5f7;
-    }
-
-    html.apple_client-panel h1 {
-        color: #ffffff;
-    }
-
-    html.apple_client-panel .tsevel-body,
-    html.apple_client-panel .altangerel-body,
-    html.apple_client-panel .definition,
-    html.apple_client-panel p,
-    html.apple_client-panel li {
-        color: #f5f5f7;
-    }
-
-    html.apple_client-panel b,
-    html.apple_client-panel strong {
-        color: #ffffff;
-    }
-
-    html.apple_client-panel i,
-    html.apple_client-panel em,
-    html.apple_client-panel .ex {
-        color: #aeaeb2;
-    }
-
-    html.apple_client-panel .galig,
-    html.apple_client-panel .pronunciation,
-    html.apple_client-panel .pr,
-    html.apple_client-panel .source-badge {
-        color: #98989d;
-    }
-
-    html.apple_client-panel .bichig-column {
-        color: #64b5f6;
-        background-color: #1a2a44;
-        border-color: #2c4266;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-    }
-
-    html.apple_client-panel .bichig-tag {
-        background-color: #1a2a44;
-        border-color: #2c4266;
-    }
-
-    html.apple_client-panel .bichig-glyph {
-        color: #64b5f6;
-    }
-
-    html.apple_client-panel .bichig-label {
-        color: #f5f5f7;
     }
 }
 
@@ -263,4 +196,52 @@ b, strong {
     font-size: 0.72em;
     color: var(--text-secondary);
     opacity: 0.75;
+}
+
+/* --------------------------------------------------------------------------
+   macOS Look Up Popover Panel Rules (html.apple_client-panel)
+   Applies exclusively inside the macOS Look Up floating popover panel.
+   Uses Apple WebKit system semantic colors (-apple-system-label) which
+   dynamically adapt to macOS light and dark vibrancy backgrounds without
+   relying on DOM media queries.
+   -------------------------------------------------------------------------- */
+html.apple_client-panel body,
+html.apple_client-panel h1,
+html.apple_client-panel .tsevel-body,
+html.apple_client-panel .altangerel-body,
+html.apple_client-panel .definition,
+html.apple_client-panel p,
+html.apple_client-panel li,
+html.apple_client-panel b,
+html.apple_client-panel strong,
+html.apple_client-panel .bichig-label {
+    color: -apple-system-label !important;
+}
+
+html.apple_client-panel i,
+html.apple_client-panel em,
+html.apple_client-panel .ex {
+    color: -apple-system-secondary-label !important;
+}
+
+html.apple_client-panel .galig,
+html.apple_client-panel .pronunciation,
+html.apple_client-panel .pr,
+html.apple_client-panel .source-badge {
+    color: -apple-system-tertiary-label !important;
+}
+
+html.apple_client-panel .bichig-column {
+    color: -apple-system-blue !important;
+    background-color: rgba(128, 128, 128, 0.15) !important;
+    border: 1px solid rgba(128, 128, 128, 0.25) !important;
+}
+
+html.apple_client-panel .bichig-tag {
+    background-color: rgba(128, 128, 128, 0.15) !important;
+    border: 1px solid rgba(128, 128, 128, 0.25) !important;
+}
+
+html.apple_client-panel .bichig-glyph {
+    color: -apple-system-blue !important;
 }
