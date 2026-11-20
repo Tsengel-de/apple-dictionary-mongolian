@@ -30,3 +30,4 @@ on run
 		display alert "Суулгахад алдаа гарлаа" message errMsg as critical
 	end try
 end run
+
